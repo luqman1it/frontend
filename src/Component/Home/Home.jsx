@@ -7,15 +7,20 @@ export default function Home() {
     const handleSectionChange = (sectionName) => {
         setCurrentSection(sectionName);
     };
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const toggleDropDown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    }
     return (
-        <div className='home'>
+        <div id='home' className='la-home'>
             <div className="header">
                 <div className="container">
                     <div className="main-header">
                         <div className="logo">
                             <h2>Focal X</h2>
                         </div>
-                        <div className="navbar display">
+                        <div className="navbar">
                             <li className={currentSection === 'home' ? 'active' : ''} onClick={() => handleSectionChange('home')}>Home</li>
                             <li className={currentSection === 'about' ? 'active' : ''} onClick={() => handleSectionChange('about')}>About</li>
                             <li className={currentSection === 'project' ? 'active' : ''} onClick={() => handleSectionChange('project')}>Project</li>
@@ -23,9 +28,19 @@ export default function Home() {
                             <li className='login'>LogIn</li>
 
                         </div>
-                        {/* <div className="burger">
+                        <div className="burger-menu" onClick={toggleDropDown}>
                             <i class="fa-solid fa-bars"></i>
-                        </div> */}
+                        </div>
+                        {isDropdownOpen &&
+                            <div className="dropdown-menu">
+                                <li onClick={() => handleSectionChange('home')}>Home</li>
+                                <li onClick={() => handleSectionChange('about')}>About</li>
+                                <li onClick={() => handleSectionChange('project')}>Project</li>
+                                <li onClick={() => handleSectionChange('contact')}>Contact</li>
+                                <li className='login'>LogIn</li>
+                            </div>
+                        }
+
                     </div>
                 </div>
             </div>
@@ -40,6 +55,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
