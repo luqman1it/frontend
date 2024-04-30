@@ -1,0 +1,69 @@
+/* Start Global Rules */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-color: #252523;
+  --button-color: #c0392b;
+  --second-button-color: #494947;
+
+}
+
+.padding-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--main-font-color);
+  font-size: 16px;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+@media (max-width:444px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (min-width:445px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+
+}
+
+@media (min-width:700px) {
+  .container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (min-width:900px) {
+  .container {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+/* End Global Rules */
