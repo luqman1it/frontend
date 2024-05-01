@@ -21,10 +21,10 @@ export default function Home() {
                             <h2>Focal X</h2>
                         </div>
                         <div className="navbar">
-                            <li className={currentSection === 'home' ? 'active' : ''} onClick={() => handleSectionChange('home')}>Home</li>
-                            <li className={currentSection === 'about' ? 'active' : ''} onClick={() => handleSectionChange('about')}>About</li>
-                            <li className={currentSection === 'project' ? 'active' : ''} onClick={() => handleSectionChange('project')}>Project</li>
-                            <li className={currentSection === 'contact' ? 'active' : ''} onClick={() => handleSectionChange('contact')}>Contact</li>
+                            <li className={currentSection === 'home' ? 'active' : ''} onClick={() => handleSectionChange('home')}> <a href="#home">Home</a></li>
+                            <li className={currentSection === 'about' ? 'active' : ''} onClick={() => handleSectionChange('about')}> <a href="#about">About</a></li>
+                            <li className={currentSection === 'project' ? 'active' : ''} onClick={() => handleSectionChange('project')}>  <a href="#project">Project</a></li>
+                            <li className={currentSection === 'contact' ? 'active' : ''} onClick={() => handleSectionChange('contact')}> <a href="#contact">Contact</a></li>
                             <li className='login'>LogIn</li>
 
                         </div>
