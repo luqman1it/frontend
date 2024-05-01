@@ -160,8 +160,22 @@
 
 .la-home .button-group .btn:first-child {
     background-color: var(--button-color);
+    transition: 1s;
+}
+
+.la-home .button-group .btn:first-child:hover {
+    background-color: var(--font-color);
+
 }
 
 .la-home .button-group .btn:nth-child(2) {
     background-color: var(--font-color);
+    transition: 1s;
+}
+
+.la-home .button-group .btn:nth-child(2):hover {
+    background-color: var(--button-color);
+    transition: 1s;
+
+
 }

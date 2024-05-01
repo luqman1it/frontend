@@ -12,6 +12,7 @@ export default function Home() {
     const toggleDropDown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     }
+
     return (
         <div id='home' className='la-home'>
             <div className="header">
