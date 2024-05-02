@@ -1,0 +1,38 @@
+.aj-contact,
+.aj-contact * {
+  box-sizing: border-box;
+}
+.aj-contact {
+  position: relative;
+}
+.aj-contact:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  background: #141414b8;
+  z-index: 1;
+}
+.aj-contact {
+  background-image: url(./../../assets/bg-contact.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.aj-contact:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 330px;
+  width: 100%;
+  background: #141414;
+}
+
+.aj-contact-content {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,55 @@
+.section-header {
+  margin-bottom: 80px;
+}
+.section-header h2 {
+  color: #fff;
+  font-size: 35px;
+  margin: 0px;
+  line-height: 1;
+  text-align: center;
+}
+.section-header .icon {
+  border-top: 1px solid #c0392b;
+  position: relative;
+  width: 150px;
+  margin: auto;
+  margin-top: 30px;
+}
+.icon:before {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  background: #c0392b;
+  border-radius: 100%;
+}
+.icon::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  background: #c0392b;
+  border-radius: 100%;
+}
+.icon span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #c0392b;
+  font-size: 12px;
+  transform: rotate(45deg);
+  top: -8px;
+  background: #c0392b;
+  color: #fff;
+  left: 0px;
+  right: 0px;
+  line-height: 13px;
+  margin: auto;
+}
+.icon span svg {
+  transform: rotate(134deg);
+}
