@@ -1,0 +1,166 @@
+.container.km-about-container h2{
+    color: #252523;
+}
+.container.km-about-container .km-container-row-About{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    gap: 10px;
+}
+.container.km-about-container .km-container-row-About .col-6-about{
+    width: 50%;
+   align-items: center;
+}
+.container.km-about-container .km-container-row-About .col-6-about p{
+    color:#494947;
+    line-height: 2;
+    font-size: 1rem;
+
+}
+.container.km-about-container.km-container-row-About .col-6-about ul.info-about{
+    margin: 40px auto;
+    max-width:100%;
+}
+.container.km-about-container .km-container-row-About .col-6-about ul.info-about li{
+    display: block;
+    margin-top: 30px;
+max-width: 100%;
+    font-size:1rem;
+}
+.container.km-about-container .km-container-row-About .col-6-about ul.info-about li strong {
+   width: 40%;
+    display: inline-block;
+    position: relative;
+    margin-right: 30px;
+    font-weight: 900;
+}
+.container.km-about-container .km-container-row-About .col-6-about ul.info-about li strong:after {
+    content: " : ";
+    position: absolute;
+    right: 0px;
+}
+.container.km-about-container .km-container-row-About .col-6-about ul.info-about li span{
+    max-width: 100%;
+} 
+
+
+ 
+/* iconservices */
+.container.km-about-container .km-container-row-About .col-6-about .row-icon{
+width: 100%;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+margin: 0 auto;
+gap: 30px;
+}
+.container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon{
+    max-width: 30%;
+    margin-top: 10px;
+    text-align: center;
+
+}
+.container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon .icon-serve{
+    border: 1px solid #c0392b;
+    text-align: center;
+width:120px;
+height:120px;
+
+    margin: auto;
+    margin-bottom: 15px;
+    line-height: 2;
+    font-size: 63px;
+    color: #494947;
+    transition: all 1s;
+}
+.container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon .icon-serve .label-serv
+{
+    font-size: 15px;
+    font-weight: bold;
+    color: #494947;
+    text-align: center;
+
+ }
+ .container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon .icon-serve:hover svg{
+    color: #c0392b;   
+
+
+ }
+ .container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon .icon-serve:hover{
+    border: 1px solid #494947;
+    transform: translateY(-10px)
+ }
+ .container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon .icon-serve:hover  + .label-serv {
+    color: #494947;
+  }
+
+
+/* media query */
+@media screen and (min-width:700px) and (max-width:992px) {
+    .container.km-about-container .km-container-row-About{
+        display: flex;
+        margin: 10px auto;
+        justify-content: center;
+        max-width: 100%;
+        align-items: center;
+    }
+    .container.km-about-container .km-container-row-About .col-6-about{
+        max-width: 90%;
+margin: 30px auto;
+    }
+    .container.km-about-container .km-container-row-About .col-6-about .row-icon{
+     display: flex;
+     max-width: 90%;
+        margin: 10px auto;
+     align-items: center;
+}
+.container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon
+{
+    max-width: 50%;
+     margin: 30px auto;
+}
+}
+@media screen and (min-width:300px) and (max-width:700px) {
+    
+    .container.km-about-container .km-container-row-About{
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
+    .container.km-about-container .km-container-row-About .col-6-about{
+        width: 100%;
+        margin: 20px auto;
+    }
+    .container.km-about-container .km-container-row-About .col-6-about ul{
+        margin: 10px auto;
+    }
+        .container.km-about-container .km-container-row-About .col-6-about ul.info-about li{
+            display: block;
+            margin-top: 30px;
+            font-size: 10px;
+        
+            margin: 30px auto;
+        }
+        .container.km-about-container .km-container-row-About .col-6-about ul.info-about li strong {
+             display: inline-block;
+             position: relative;
+
+             margin-right: 10px;
+             font-weight: 900;
+         }
+     
+    }
+    .container.km-about-container .km-container-row-About .col-6-about .row-icon{
+     display: flex;
+     max-width: 100%;
+     align-items: center;
+     justify-content: space-between;
+}
+.container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon
+{
+    max-width: 100%;
+    margin: 10px auto;
+}
