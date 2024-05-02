@@ -85,7 +85,7 @@ export default function About() {
                             {iconServices.map((e)=>{
                                 return(
 <div className="col-4-icon">
-                           <IconServices icon={e.icon} serve={e.serve}/>
+                           <IconServices  icon={e.icon} serve={e.serve}/>
                         </div>
                                 )
                             })}

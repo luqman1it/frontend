@@ -15,6 +15,7 @@ import {projects} from './projectsData.js' ;
 
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import SectionHeader from '../SectionHeader/SectionHeader.jsx';
 
 
 //declaring variables 
@@ -59,6 +60,7 @@ if(word=='Apps'){
     return (
 
      <>
+     <SectionHeader title="My Projects"/>
     <div className='nav_filterbuttons'>
       
       <button  className="filterbutton" value="All" onClick={handleFilter}>All</button>
