@@ -4,7 +4,7 @@ import ContactForm from './ContactForm/ContactForm'
 
 export default function Contact() {
     return (
-        <div className='aj-contact container padding-section'>
+        <div id='contact' className='aj-contact container padding-section'>
             <div className="aj-contact-content">
                 <SectionHeader title="Contact Me" />
                 <ContactForm />

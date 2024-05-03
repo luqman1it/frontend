@@ -1,97 +1,102 @@
-.nav_filterbuttons{
-   
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    margin:0 auto;
-    text-align: center;
+.nav_filterbuttons {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.nav_filterbuttons .filterbutton{
-    font-size: 13px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 800;
-    text-align: center;
-    color: #787876;
-    margin-bottom: 40px;
-    margin-right: 0px;
-    padding: 0px 25px 0px 15px;
-    border: none;
-    background: none;
-    
+/* change color to black */
+#project h2 {
+  color: black;
 }
 
-.nav_filterbuttons .filterbutton:hover{
+.nav_filterbuttons .filterbutton {
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  text-align: center;
+  color: #787876;
+  margin-bottom: 40px;
+  margin-right: 0px;
+  padding: 0px 25px 0px 15px;
+  border: none;
+  background: none;
 
-
-    color: var(--button-color);
-    cursor: pointer;
 }
+
+.nav_filterbuttons .filterbutton:hover {
+
+
+  color: var(--button-color);
+  cursor: pointer;
+}
+
 .projectswiper .swiper {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-  
-  .projectswiper  .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-   
-    
-  }
-  
-  .projectswiper .swiper-slide img {
-    display: block;
-    width: 100%;
-  }
-  
-.projectswiper h2{
-   padding:10px 0px;
-   font-size: 1rem;
-   left: 0px;
-   
-
-}
-  .projectswiper p{
-    
-        font-size: 1rem;
-        color: #7f8c9b;
-        line-height: 150%;
-      
-  }
-
-  .projectswiper button{
-    background-color:var(--button-color);
-    color: #fff;
-    display: inline-block;
-    padding: 10px 20px;
-    cursor: pointer;
-    border:1px solid #fff;
-    margin-bottom: 0;
-    margin-top: 10px;
-    text-align: center;
-    border-radius: 30px;
-    
-
-  }
-
-
-
-  @media screen and (max-width: 762px) 
-{
-    
-    .nav_filterbuttons .filterbutton{
-        padding: 0px 0px 0px 10px;
-        
-  }
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
-@media screen and (max-width: 300px) 
-{
-    
-    .nav_filterbuttons .filterbutton{
-        padding: 0px 0px 0px 5px;
-        flex-wrap: wrap;
+.projectswiper .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+
+
+}
+
+.projectswiper .swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.projectswiper h2 {
+  padding: 10px 0px;
+  font-size: 1rem;
+  left: 0px;
+
+
+}
+
+.projectswiper p {
+
+  font-size: 1rem;
+  color: #7f8c9b;
+  line-height: 150%;
+
+}
+
+.projectswiper button {
+  background-color: var(--button-color);
+  color: #fff;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  margin-bottom: 0;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 30px;
+
+
+}
+
+
+
+@media screen and (max-width: 762px) {
+
+  .nav_filterbuttons .filterbutton {
+    padding: 0px 0px 0px 10px;
+
+  }
+}
+
+@media screen and (max-width: 300px) {
+
+  .nav_filterbuttons .filterbutton {
+    padding: 0px 0px 0px 5px;
+    flex-wrap: wrap;
   }
 }
