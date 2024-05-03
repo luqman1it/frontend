@@ -49,6 +49,32 @@
     padding: 6px 12px;
     cursor: pointer;
     border-radius: 12px;
+    position: relative;
+}
+
+.la-home .navbar .drop-down-login {
+    position: absolute;
+    top: 47px;
+    right: 0px;
+    background-color: #cdcdcdc4;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.la-home .navbar .drop-down-login input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    outline: 1px solid var(--button-color);
+}
+
+.la-home .navbar .drop-down-login input:last-child {
+    margin: 0 auto;
+    background-color: var(--button-color);
+    color: white;
+    display: block;
+    cursor: pointer;
 }
 
 .la-home .navbar .login:hover {
