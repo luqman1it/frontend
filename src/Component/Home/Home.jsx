@@ -34,10 +34,10 @@ export default function Home() {
                         </div>
                         {isDropdownOpen &&
                             <div className="dropdown-menu">
-                                <li onClick={() => handleSectionChange('home')}>Home</li>
-                                <li onClick={() => handleSectionChange('about')}>About</li>
-                                <li onClick={() => handleSectionChange('project')}>Project</li>
-                                <li onClick={() => handleSectionChange('contact')}>Contact</li>
+                                <li onClick={() => handleSectionChange('home')}> <a href="#home">Home</a> </li>
+                                <li onClick={() => handleSectionChange('about')}> <a href="#about">About</a> </li>
+                                <li onClick={() => handleSectionChange('project')}> <a href="#project">Project</a> </li>
+                                <li onClick={() => handleSectionChange('contact')}> <a href="#contact">Contact</a></li>
                                 <li className='login'>LogIn</li>
                             </div>
                         }
@@ -50,7 +50,7 @@ export default function Home() {
                     <h2>Hello !</h2>
                     <p>We are a team of full stack developers ready to bring your projects to life</p>
                     <h1><span>Our Name is</span><br />X6 full stack</h1>
-                    <div class="button-group">
+                    <div className="button-group">
                         <a class="btn" href="#contact">Contact Me</a>
                         <a class="btn" href="#project">My Project</a>
                     </div>

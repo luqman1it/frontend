@@ -1,0 +1,31 @@
+.footer {
+    background-color: #252523;
+    padding: 20px 0px;
+
+}
+
+.footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer .container .icon-social a {
+    margin-right: 20px;
+    font-size: 22px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.footer .container .icon-social a:hover {
+    color: var(--button-color);
+}
+
+.footer .container .names {
+    display: flex;
+    flex-wrap: wrap;
+    color: #fff;
+    gap: 20px;
+}

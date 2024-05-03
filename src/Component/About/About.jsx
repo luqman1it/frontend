@@ -41,7 +41,7 @@ export default function About() {
             <div className="km-container-row-About">
                 <div className="col-6-about">
 
-                    <p>We are Biobo, our strategists will help you set an objective and choose your tools, developing a plan that is custom built for your business. We make sure to provides unlimited collection of options, elements & creative shortcode lists. All Whole elements can be easily styled, edited and modified in little easy steps to save your time!
+                    <p>As a team of full-stack developers at X6 Full Stack, we excel in creating bespoke solutions for your programming needs. With our strategic approach, we ensure clear objectives are set and the most suitable tools are chosen. Our expertise covers the entire development spectrum, from inception to execution, guaranteeing tailored plans that align with your business goals.
                     </p>
                     <ul className="info-about">
 
@@ -49,7 +49,7 @@ export default function About() {
                             <strong>
                                 FullName
                             </strong>
-                            <span >   Smith Robert </span>
+                            <span >  X6 Full Stack </span>
                         </li>
                         <li>
                             <strong>
