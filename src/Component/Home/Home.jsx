@@ -32,8 +32,8 @@ export default function Home() {
                             <li className={currentSection === 'about' ? 'active' : ''} onClick={() => handleSectionChange('about')}> <a href="#about">About</a></li>
                             <li className={currentSection === 'project' ? 'active' : ''} onClick={() => handleSectionChange('project')}>  <a href="#project">Project</a></li>
                             <li className={currentSection === 'contact' ? 'active' : ''} onClick={() => handleSectionChange('contact')}> <a href="#contact">Contact</a></li>
-                            <li className='login' onClick={toogleLogin} >
-                                Login
+                            <li className='login'  >
+                                <span onClick={toogleLogin}>Login</span>
                                 {login &&
                                     <div className="drop-down-login">
                                         <input type="text" name="name" id="" placeholder='Enter Your Name' />
