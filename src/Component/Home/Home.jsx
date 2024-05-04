@@ -4,12 +4,6 @@ import { useState } from 'react';
 export default function Home() {
     const [currentSection, setCurrentSection] = useState('home');
 
-    const [login, setLogin] = useState(false);
-
-    function toogleLogin() {
-        setLogin(!login);
-
-    }
     const handleSectionChange = (sectionName) => {
         setCurrentSection(sectionName);
     };
@@ -32,15 +26,7 @@ export default function Home() {
                             <li className={currentSection === 'about' ? 'active' : ''} onClick={() => handleSectionChange('about')}> <a href="#about">About</a></li>
                             <li className={currentSection === 'project' ? 'active' : ''} onClick={() => handleSectionChange('project')}>  <a href="#project">Project</a></li>
                             <li className={currentSection === 'contact' ? 'active' : ''} onClick={() => handleSectionChange('contact')}> <a href="#contact">Contact</a></li>
-                            <li className='login' onClick={toogleLogin} >
-                                Login
-                                {login &&
-                                    <div className="drop-down-login">
-                                        <input type="text" name="name" id="" placeholder='Enter Your Name' />
-                                        <input type="password" name="password" id="" placeholder='Enter Your Password' />
-                                        <input type="submit" value="Sign Up" />
-                                    </div>}
-                            </li>
+                            <li className='login'>Login</li>
 
                         </div>
                         <div className="burger-menu" onClick={toggleDropDown}>
