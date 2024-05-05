@@ -1,25 +1,26 @@
-
-import Home from './Component/Home/Home'
-import About from './Component/About/About'
-import Project from './Component/Project/Project'
-import Contact from './Component/Contact/Contact'
-import Footer from './Component/Footer/Footer'
-
-
 import './App.css'
-
+import { Routes, Route } from 'react-router-dom'
+import Dashboard from './Component/Dashboard/Dashboard'
+import Login from './Component/Login/Login'
+import LandingBage from './Component/LandingBage'
+import DashboardProject from './Component/Dashboard/DashboardProject/DashboardProject'
+import DashboardMessage from './Component/Dashboard/DashboardMessage/DashboardMessage'
 
 function App() {
 
 
   return (
-    <>
-      <Home />
-      <About />
-      <Project />
-      <Contact />
-      <Footer />
-    </>
+    <div>
+      <Routes>
+        <Route path="/" element={<LandingBage />} />
+        <Route path="/dashboard" element={<Dashboard />} >
+          <Route path="project" element={<DashboardProject />} />
+          <Route path="message" element={<DashboardMessage />} />
+
+        </Route>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
   )
 }
 
