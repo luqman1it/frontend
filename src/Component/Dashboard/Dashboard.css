@@ -6,6 +6,10 @@
     padding: 12px 50px;
 }
 
+.dash-header h2 {
+    color: #252523;
+}
+
 .dashboard .dash-app {
     display: flex;
 

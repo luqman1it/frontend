@@ -6,7 +6,7 @@ export default function Dashboard() {
     return (
         <div className='dashboard'>
             <div className="dash-header">
-                <h2>Dashboard</h2>
+                <h2>Focal X</h2>
                 <div >
                     <Link className='log-out' to='/'>LogOut</Link>
                 </div>
