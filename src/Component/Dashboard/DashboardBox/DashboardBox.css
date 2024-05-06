@@ -1,0 +1,41 @@
+.dash-box {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.dash-box .box {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    height: 150px;
+    width: 150px;
+    border-radius: 12px;
+}
+
+.dash-box .box:first-child {
+    background-color: #ff6347;
+}
+
+.dash-box .box:nth-child(2) {
+    background-color: rgba(255, 99, 71, 0.5);
+    color: #fff;
+}
+
+.dash-box .box:nth-child(2) h1 {
+    border-bottom: 2px solid white;
+
+}
+
+.dash-box .box h1 {
+    border-bottom: 2px solid black;
+}
+
+.dash-box .box span {
+    font-size: 22px;
+    font-weight: bold;
+}

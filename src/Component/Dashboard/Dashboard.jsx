@@ -1,26 +1,27 @@
 import React from 'react'
 import './Dashboard.css'
-import { Link, Outlet } from 'react-router-dom'
-import userProfile from '../../images/userProfile.jpg'
+import { Link, NavLink, Outlet } from 'react-router-dom'
+import userIcon from '../../images/abc.jpg'
 export default function Dashboard() {
     return (
         <div className='dashboard'>
             <div className="dash-header">
-                <h2>Dashboard</h2>
-                <div className="log-out">
-                    <button>LogOut</button>
+                <h2>Focal X</h2>
+                <div >
+                    <Link className='log-out' to='/'>LogOut</Link>
                 </div>
             </div>
             <div className="dash-app">
                 <div className="side-bar">
                     <div className="content">
                         <div className="profile" >
-                            <img src={userProfile} alt="" style={{ width: '100px' }} />
+                            <img src={userIcon} alt="" />
                         </div>
                         <div className="sections">
-                            <Link className='link' to='/dashboard/project'>Project</Link>
-                            <Link className='link' to='/dashboard/message'>Message</Link>
-                            <Link className='link' to='/dashboard'>Skills</Link>
+                            <NavLink className='link' to='/dashboard/box'><i class="fa-solid fa-house"></i> Dashboard</NavLink>
+                            <NavLink className='link' to='/dashboard/project'><i class="fa-solid fa-list-check"></i> Project</NavLink>
+                            <NavLink className='link' to='/dashboard/message'><i class="fa-solid fa-message"></i> Message</NavLink>
+                            <Link className='link'><i class="fa-solid fa-building"></i> Skills</Link>
                         </div>
                     </div>
                 </div>
