@@ -14,6 +14,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<LandingBage />} />
+        <Route path='/login' element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} >
           <Route path="box" element={<DashboardBox />} />
           <Route path="project" element={<DashboardProject />} />
