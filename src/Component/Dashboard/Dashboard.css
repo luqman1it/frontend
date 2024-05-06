@@ -1,5 +1,5 @@
 .dash-header {
-    background-color: red;
+    background-color: var(--button-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,7 +20,7 @@
 }
 
 .dashboard .dash-header .log-out:hover {
-    background-color: red;
+    background-color: var(--button-color);
     color: #fff;
 }
 
@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: red;
+    color: var(--button-color);
     padding-top: 30px;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .dashboard .sections .link {
-    color: red;
+    color: var(--button-color);
     font-weight: bold;
     font-size: 18px;
     border-radius: 10px;
