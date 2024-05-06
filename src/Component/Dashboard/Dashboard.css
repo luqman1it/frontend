@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 12px 50px;
 }
 
 .dashboard .dash-app {
@@ -11,27 +11,64 @@
 
 }
 
-.dashboard .side-bar-right {
-    padding: 30px;
+.dashboard .dash-header .log-out {
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #252523;
+    background-color: white;
+}
+
+.dashboard .dash-header .log-out:hover {
+    background-color: red;
+    color: #fff;
 }
 
 .dashboard .side-bar {
     width: 250px;
-    background-color: blue;
+    background-color: #252523;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: red;
+    padding-top: 30px;
 }
+
+.dashboard .content .profile img {
+    border-radius: 50%;
+    width: 150px;
+}
+
+.dashboard .side-bar-right {
+    padding: 30px;
+}
+
+
+
 
 .dashboard .sections {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-top: 30px;
 }
 
 .dashboard .sections .link {
     color: red;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.dashboard .sections .link i {
+    margin-right: 15px;
+}
+
+.dashboard .sections .link.active {
+    background-color: white;
+
 
 }
