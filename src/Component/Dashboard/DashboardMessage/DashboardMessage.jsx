@@ -29,25 +29,9 @@ export default function DashboardMessage() {
       { field: 'name', headerName: 'Name', width: 130 },
       { field: 'email', headerName: 'Email', width: 130 },
       { field:'subject', headerName: 'Subject', width: 130 },
-      { field:'message', headerName: 'Message', width: 130 },
-      {field :'Action' ,renderCell:() =>{
-        return(
-          <Button
-          color='primary'
-          variant="contained"
-
-          onClick={
-          handleDelete
-          }>Delete</Button>
-        )
-      }}
-      
- 
-    ]
-
-  })
-
-
+      { field:'message', headerName: 'Message', width: 230 },
+    
+    ]})
  
 
 
@@ -65,6 +49,7 @@ export default function DashboardMessage() {
         <DataGrid
          columns={columns}
          rows={messages}
+        
          checkboxSelection
          onRowSelectionModelChange={(selectionModel) => {
           const rowIds = selectionModel.map(rowId => parseInt(String(rowId)));
@@ -76,6 +61,16 @@ export default function DashboardMessage() {
         >
       
         </DataGrid>
+
+        <Button
+          color='primary'
+          variant="contained"
+
+          onClick={
+          handleDelete
+          }
+          
+          sx={{textAlign : 'center', margin:'25px', alignItems:'center'}}>Delete</Button>
 
       </Box>
     )
