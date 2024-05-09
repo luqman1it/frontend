@@ -68,14 +68,14 @@ export default function DashboardProject() {
             color="success"
             variant="contained"
             onClick={handleAdd}
-            sx={{ textAlign: "center", margin: "25px", alignItems: "center" }}
+            sx={{ textAlign: "center", alignItems: "center" }}
         >
             Add Project
         </Button>
         <Typography
             variant="h2"
             component="h2"
-            sx={{ textAlign: "center", mt: "5px", mb: "20px" }}
+            sx={{ textAlign: "center", mt: "0px", mb: "20px" }}
         >
             Projects
         </Typography>
@@ -96,7 +96,7 @@ export default function DashboardProject() {
             color="error"
             variant="contained"
             onClick={handleDelete}
-            sx={{ textAlign: "center", margin: "25px", alignItems: "center" }}
+            sx={{ textAlign: "center", mt: "10px", alignItems: "center" }}
         >
             Delete
         </Button>
