@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Dashboard.css'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import userIcon from '../../images/abc.jpg'
 export default function Dashboard() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!window.localStorage.getItem('token')) {
+            navigate('/login');
+        }
+    }, []);
     return (
         <div className='dashboard'>
             <div className="dash-header">
