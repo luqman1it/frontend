@@ -27,9 +27,9 @@ export default function DashboardProject() {
         
         const projectName = window.prompt("Enter project name:");
 
-        const subject = window.prompt("Enter subject:");
+        const description = window.prompt("Enter Description:");
 
-        if (!projectName || !subject) {
+        if (!projectName || !description) {
             return;
         }
         
@@ -41,7 +41,7 @@ export default function DashboardProject() {
         const newProject = {
             id: newId,
             name: projectName,
-            subject: subject
+            description: description
         }
 
         const updatedProjects = [...projects, newProject];
@@ -53,7 +53,7 @@ export default function DashboardProject() {
         return [
         { field: "id", headerName: "ID", width: 70, filterable: false },
         { field: "name", headerName: "Project Name", width: 130 },
-        { field: "subject", headerName: "Subject", width: 130 },
+        { field: "description", headerName: "Description", width: 130 },
         ];
     });
 
