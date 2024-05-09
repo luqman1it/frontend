@@ -93,7 +93,7 @@ export default function DashboardProject() {
         ></DataGrid>
 
         <Button
-            color="primary"
+            color="error"
             variant="contained"
             onClick={handleDelete}
             sx={{ textAlign: "center", margin: "25px", alignItems: "center" }}
