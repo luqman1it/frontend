@@ -14,6 +14,8 @@ export default function DashboardProject() {
         });
     }, []);
 
+    console.log(projects)
+    
     const handleDelete = () => {
         const updatedProjects = projects.filter(
         (project) => !deletedRows[deletedRows.length - 1].includes(project)
@@ -26,8 +28,9 @@ export default function DashboardProject() {
     const handleAdd = () => {
         
         const projectName = window.prompt("Enter project name:");
-
         const description = window.prompt("Enter Description:");
+        const image_url = window.prompt("Enter Image URL:");
+        const link = window.prompt("Enter Link:");
 
         if (!projectName || !description) {
             return;
@@ -41,7 +44,9 @@ export default function DashboardProject() {
         const newProject = {
             id: newId,
             name: projectName,
-            description: description
+            username: description,
+            phone: image_url,
+            website: link
         }
 
         const updatedProjects = [...projects, newProject];
@@ -53,7 +58,10 @@ export default function DashboardProject() {
         return [
         { field: "id", headerName: "ID", width: 70, filterable: false },
         { field: "name", headerName: "Project Name", width: 130 },
-        { field: "description", headerName: "Description", width: 130 },
+        { field: "username", headerName: "Description", width: 130 },
+        { field: "phone", headerName: "Image Url", width: 130 },
+        { field: "website", headerName: "Link", width: 130 },
+        { field: "id", headerName: "Type ID", width: 130 },
         ];
     });
 
