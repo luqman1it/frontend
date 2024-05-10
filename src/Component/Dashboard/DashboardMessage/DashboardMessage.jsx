@@ -7,30 +7,22 @@ import {getData} from './getdata'
 
 export default function DashboardMessage() { 
   const [ messages,setMessages] = useState([]);
-  const [rows,setRows]=useState([]);
   const [deletedRows,setDeletedRows] =useState([])
 
   useEffect(() => {
     getData().then (data => {
     setMessages(data);
-    setRows((messages)=>{
-      return messages.map((message) => {
-        return message
-      })
-    })
-
-    console.log(messages)
-
+ 
    
   })},[]);
  
  
 
 
-  const handleDelete = ( ) => {
-    console.log(deletedRows)
-  }
-
+  const onButtonClick = (e) => {
+    e.stopPropagation();
+    //do whatever you want with the row
+};
 
 
   const columns = useMemo(() => {
@@ -40,6 +32,16 @@ export default function DashboardMessage() {
       { field: 'email', headerName: 'Email', width: 130 },
       { field:'subject', headerName: 'Subject', width: 130 },
       { field:'message', headerName: 'Message', width: 230 },
+      { field: 'actions', headerName: 'Actions', width: 400, renderCell: () => {
+        return (
+          <Button
+            onClick={(e) => onButtonClick(e)}
+            variant="contained"
+          >
+            Delete
+          </Button>
+        );
+      } }
     
     ]})
  
@@ -76,17 +78,7 @@ export default function DashboardMessage() {
          </DataGrid>
  
       
-        
-        <Button
-          color='primary'
-          variant="contained"
-
-          onClick={
-          handleDelete
-          }
-          
-          sx={{textAlign : 'center', margin:'25px', alignItems:'center'}}>Delete</Button>
-
+     
       </Box>
     )
 }
