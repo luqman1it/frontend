@@ -21,6 +21,7 @@
     font-weight: 600;
     color: #252523;
     background-color: white;
+    cursor: pointer;
 }
 
 .dashboard .dash-header .log-out:hover {
