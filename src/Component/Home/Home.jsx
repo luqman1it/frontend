@@ -31,7 +31,7 @@ export default function Home() {
 
                         </div>
                         <div className="burger-menu" onClick={toggleDropDown}>
-                            <i class="fa-solid fa-bars"></i>
+                            <i className="fa-solid fa-bars"></i>
                         </div>
                         {isDropdownOpen &&
                             <div className="dropdown-menu">
@@ -52,8 +52,8 @@ export default function Home() {
                     <p>We are a team of full stack developers ready to bring your projects to life</p>
                     <h1><span>Our Name is</span><br />X6 full stack</h1>
                     <div className="button-group">
-                        <a class="btn" href="#contact">Contact Me</a>
-                        <a class="btn" href="#project">My Project</a>
+                        <a className="btn" href="#contact">Contact Me</a>
+                        <a className="btn" href="#project">My Project</a>
                     </div>
                 </div>
             </div>

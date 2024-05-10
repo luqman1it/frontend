@@ -7,13 +7,23 @@ import {getData} from './getdata'
 
 export default function DashboardMessage() { 
   const [ messages,setMessages] = useState([]);
+  const [rows,setRows]=useState([]);
   const [deletedRows,setDeletedRows] =useState([])
 
-  useEffect(() => {getData().then (data => {
+  useEffect(() => {
+    getData().then (data => {
     setMessages(data);
+    setRows((messages)=>{
+      return messages.map((message) => {
+        return message
+      })
+    })
+
+    console.log(messages)
+
    
   })},[]);
-
+ 
  
 
 
@@ -46,22 +56,27 @@ export default function DashboardMessage() {
         <Typography variant='h2' component='h2' sx={{textAlign : 'center' ,mt:'5px' ,mb:'20px' }}>
          Contact Messages
         </Typography>
-        <DataGrid
-         columns={columns}
-         rows={messages}
-        
-         checkboxSelection
-         onRowSelectionModelChange={(selectionModel) => {
-          const rowIds = selectionModel.map(rowId => parseInt(String(rowId)));
-          const rowsToDelete = messages.filter(row => rowIds.includes(row.id));
-          console.log(rowsToDelete)
-          setDeletedRows([...deletedRows,rowsToDelete]);
-          console.log(deletedRows)
-  }}
-        >
       
-        </DataGrid>
-
+      
+          <DataGrid
+          columns={columns}
+          rows={messages}
+          loading={!messages.length}
+          getRowId={row =>row.id}        
+          checkboxSelection
+          onRowSelectionModelChange={(selectionModel) => {
+           const rowIds = selectionModel.map(rowId => parseInt(String(rowId)));
+           const rowsToDelete = messages.filter(row => rowIds.includes(row.id));
+           console.log(rowsToDelete)
+           setDeletedRows([...deletedRows,rowsToDelete]);
+           console.log(deletedRows)
+   }}
+         >
+       
+         </DataGrid>
+ 
+      
+        
         <Button
           color='primary'
           variant="contained"
