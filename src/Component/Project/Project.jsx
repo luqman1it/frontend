@@ -93,7 +93,7 @@ export default function Project() {
           modules={[EffectCoverflow, Pagination]}
           className="mySwiper"
         >
-          {category.map((project) => (
+          {/* {category.map((project) => (
             <div key={project.id} className="projectcard">
               <SwiperSlide>
                 <img src={`http://localhost:8000/storage/${project.img_url}`} />
@@ -104,7 +104,7 @@ export default function Project() {
                 </a>
               </SwiperSlide>
             </div>
-          ))}
+          ))} */}
         </Swiper>
       </div>
     </div>

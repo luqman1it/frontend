@@ -3,6 +3,7 @@ import "./DashboardProject.css";
 import { Box, Button, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { getData } from "./getData";
+import { sendData } from "./sendData";
 
 export default function DashboardProject() {
     const [projects, setProjects] = useState([]);
@@ -14,8 +15,6 @@ export default function DashboardProject() {
         });
     }, []);
 
-    console.log(projects)
-    
     const handleDelete = () => {
         const updatedProjects = projects.filter(
         (project) => !deletedRows[deletedRows.length - 1].includes(project)
@@ -26,7 +25,7 @@ export default function DashboardProject() {
     };
 
     const handleAdd = () => {
-        
+
         const projectName = window.prompt("Enter project name:");
         const description = window.prompt("Enter Description:");
         const image_url = window.prompt("Enter Image URL:");
@@ -44,13 +43,14 @@ export default function DashboardProject() {
         const newProject = {
             id: newId,
             name: projectName,
-            username: description,
-            phone: image_url,
-            website: link
+            description: description,
+            img_url: image_url,
+            link: link
         }
+        
+        sendData(newProject);
 
         const updatedProjects = [...projects, newProject];
-        console.log(updatedProjects)
         setProjects(updatedProjects);
     };
 
@@ -58,9 +58,9 @@ export default function DashboardProject() {
         return [
         { field: "id", headerName: "ID", width: 70, filterable: false },
         { field: "name", headerName: "Project Name", width: 130 },
-        { field: "username", headerName: "Description", width: 130 },
-        { field: "phone", headerName: "Image Url", width: 130 },
-        { field: "website", headerName: "Link", width: 130 },
+        { field: "description", headerName: "Description", width: 130 },
+        { field: "img_url", headerName: "Image Url", width: 130 },
+        { field: "link", headerName: "Link", width: 130 },
         { field: "id", headerName: "Type ID", width: 130 },
         ];
     });
