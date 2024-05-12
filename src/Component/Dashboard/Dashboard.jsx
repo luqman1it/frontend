@@ -30,10 +30,10 @@ export default function Dashboard() {
                             <img src={userIcon} alt="" />
                         </div>
                         <div className="sections">
-                            <NavLink className='link' to='/dashboard/box'><i class="fa-solid fa-house"></i> Dashboard</NavLink>
-                            <NavLink className='link' to='/dashboard/project'><i class="fa-solid fa-list-check"></i> Project</NavLink>
-                            <NavLink className='link' to='/dashboard/message'><i class="fa-solid fa-message"></i> Message</NavLink>
-                            <Link className='link'><i class="fa-solid fa-building"></i> Skills</Link>
+                            <NavLink className='link' to='/dashboard/box'><i className="fa-solid fa-house"></i> Dashboard</NavLink>
+                            <NavLink className='link' to='/dashboard/project'><i className="fa-solid fa-list-check"></i> Project</NavLink>
+                            <NavLink className='link' to='/dashboard/message'><i className="fa-solid fa-message"></i> Message</NavLink>
+                            <Link className='link'><i className="fa-solid fa-building"></i> Skills</Link>
                         </div>
                     </div>
                 </div>

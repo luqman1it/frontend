@@ -31,7 +31,7 @@ export default function Home() {
 
                         </div>
                         <div className="burger-menu" onClick={toggleDropDown}>
-                            <i class="fa-solid fa-bars"></i>
+                            <i className="fa-solid fa-bars"></i>
                         </div>
                         {isDropdownOpen &&
                             <div className="dropdown-menu">
