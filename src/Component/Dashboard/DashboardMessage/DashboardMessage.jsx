@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material'
-import { DataGrid, useGridApiRef } from '@mui/x-data-grid'
+import { DataGrid } from '@mui/x-data-grid'
 import { useEffect,  useMemo,  useState } from 'react'
 
 
@@ -10,7 +10,6 @@ import axios from 'axios';
 
 export default function DashboardMessage() {
 
-  const apiRef = useGridApiRef();
   const [ messages,setMessages] = useState([]);
   
 
@@ -20,7 +19,7 @@ export default function DashboardMessage() {
   useEffect(() => {
     getData().then((data) => {
       setMessages(data)
-      
+      getData();
       
          
       });
@@ -28,15 +27,7 @@ export default function DashboardMessage() {
 
   
 
-  const updateMessages =() =>{
-    const rowIds = apiRef.current.getAllRowIds();
-    console.log(rowIds)
-
-  }
-  
-
-
-
+ 
   const handleDelete = async (event,contact) => {
 
 
