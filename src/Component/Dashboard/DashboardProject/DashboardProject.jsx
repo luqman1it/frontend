@@ -16,6 +16,23 @@ export default function DashboardProject() {
         });
     }, []);
 
+
+    const handleDelete = () => {
+        const updatedProjects = projects.filter(
+        (project) => !deletedRows[deletedRows.length - 1].includes(project)
+        );
+        setProjects(updatedProjects);
+        setDeletedRows([]);
+        console.log("updated", updatedProjects);
+    };
+
+    const handleAdd = () => {
+
+        const projectName = window.prompt("Enter project name:");
+        const description = window.prompt("Enter Description:");
+        const image_url = window.prompt("Enter Image URL:");
+        const link = window.prompt("Enter Link:");
+
     // const handleDelete = () => {
     //     const updatedProjects = projects.filter(
     //     (project) => !deletedRows[deletedRows.length - 1].includes(project)
@@ -42,6 +59,7 @@ export default function DashboardProject() {
 
     // const handleAdd = () => {
 
+
     //     const projectName = window.prompt("Enter project name:");
     //     const description = window.prompt("Enter Description:");
     //     const image_url = window.prompt("Enter Image URL:");
@@ -56,6 +74,21 @@ export default function DashboardProject() {
     //         newId = Math.max(...projects.map(project => project.id)) + 1;
     //     }
 
+
+        const newProject = {
+            id: newId,
+            name: projectName,
+            description: description,
+            img_url: image_url,
+            link: link
+        }
+        
+        sendData(newProject);
+
+        const updatedProjects = [...projects, newProject];
+        setProjects(updatedProjects);
+    };
+
     //     const newProject = {
     //         id: newId,
     //         name: projectName,
@@ -69,6 +102,7 @@ export default function DashboardProject() {
     //     const updatedProjects = [...projects, newProject];
     //     setProjects(updatedProjects);
     // };
+
 
     const columns = useMemo(() => {
         return [

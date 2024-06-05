@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -17,6 +18,37 @@ import SectionHeader from "../SectionHeader/SectionHeader.jsx";
 //declaring variables
 
 export default function Project() {
+
+  const [category, setCategory] = useState([]);
+
+
+
+  useEffect(() => {
+    
+    projects().then((data) => {
+      setCategory(data);
+    });
+  }, []);
+
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+import "./Project.css";
+
+import { projects } from "./projectsData.js";
+
+// import required modules
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import SectionHeader from "../SectionHeader/SectionHeader.jsx";
+
+
+//declaring variables
+
+
+export default function Project() {
   const [category, setCategory] = useState([projects]);
   useEffect(() => {
     projects().then((data) => {
@@ -24,9 +56,53 @@ export default function Project() {
     });
   }, []);
 
+
   const handleFilter = (e) => {
     let word = e.target.value;
     console.log(word);
+
+    
+    if (word=='All'){
+      projects().then(res => {
+        setCategory(res);
+        console.log(res)
+      })
+    
+  }
+
+  if(word=='WebDesign'){
+    projects().then(res => {
+      console.log(res)
+      const filtered=res.filter(item=> item.type.name === "WebDesign");
+      setCategory(filtered)
+      console.log(filtered)
+    })
+      
+;       
+}
+
+if(word=='Graphics'){
+  projects().then(res => {
+    console.log(res)
+    const filtered=res.filter(item=> item.type.name === "Graphics");
+    setCategory(filtered)
+    console.log(filtered)
+  })
+;       
+}
+
+
+if(word=='Apps'){
+  projects().then(res => {
+    console.log(res)
+    const filtered=res.filter(item=> item.type.name === "Apps");
+    setCategory(filtered)
+    console.log(filtered)
+  })
+;          
+}
+  };
+
 
     if (word == "All") {
       setCategory(projects);
@@ -50,6 +126,7 @@ export default function Project() {
       console.log(filtered);
     }
   };
+
 
   return (
     <div id="project">
@@ -93,7 +170,11 @@ export default function Project() {
           modules={[EffectCoverflow, Pagination]}
           className="mySwiper"
         >
+
+          {category?.map((project) => (
+
           {/* {category.map((project) => (
+
             <div key={project.id} className="projectcard">
               <SwiperSlide>
                 <img src={`http://localhost:8000/storage/${project.img_url}`} />
@@ -104,7 +185,11 @@ export default function Project() {
                 </a>
               </SwiperSlide>
             </div>
+
+          ))}
+
           ))} */}
+
         </Swiper>
       </div>
     </div>
