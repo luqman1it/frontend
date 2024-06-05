@@ -4,7 +4,10 @@ export const projects = async () => {
   return await axios
     .get("http://127.0.0.1:8000/api/allprojects")
     .then((res) => {
+<<<<<<< HEAD
     //  console.log(res)
+=======
+>>>>>>> f6c81485ad3b147ed925bade7d3eba6948fbd7c6
       return res.data.projects;
     })
     .catch((error) => {

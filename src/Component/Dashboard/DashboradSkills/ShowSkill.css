@@ -1,0 +1,57 @@
+.headers-skill{
+    background-color:#eee;
+    width: 100%;
+    margin: 30px auto;
+    padding: 40px;
+    position: relative;
+}
+.headers-skill::after{
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 100%;
+    top:0;
+    left: -8px;
+    background-color: var(--button-color);
+}
+.headers-skill:hover{
+      transition: all 1s ease-in-out;
+      transform: translateX(140px);
+}
+.headers-skill h2{
+    font-size: 20px;
+
+}
+.headers-skill .show-skill{
+padding: 10px;
+text-transform: capitalize;
+position: relative;
+color: rgb(0, 0, 0);
+}
+.headers-skill .show-skill::before{
+    position: absolute;
+    content: "";
+    top: 14px;
+    width: 20px;
+    height: 10px;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    background-color: var(--button-color);
+    left: -20px;
+
+}
+.show-header .back{
+    margin: 10px auto;
+    width: 30%;
+    border: none;
+    background-color: var(--button-color)!important;
+    outline: none;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

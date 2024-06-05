@@ -17,7 +17,14 @@ import SectionHeader from "../SectionHeader/SectionHeader.jsx";
 //declaring variables
 
 export default function Project() {
+  const [category, setCategory] = useState([projects]);
+  useEffect(() => {
+    projects().then((data) => {
+      setCategory(data);
+    });
+  }, []);
 
+<<<<<<< HEAD
   const [category, setCategory] = useState([]);
 
 
@@ -31,10 +38,13 @@ export default function Project() {
 
 
 
+=======
+>>>>>>> f6c81485ad3b147ed925bade7d3eba6948fbd7c6
   const handleFilter = (e) => {
     let word = e.target.value;
     console.log(word);
 
+<<<<<<< HEAD
     
     if (word=='All'){
       projects().then(res => {
@@ -75,6 +85,29 @@ if(word=='Apps'){
   })
 ;          
 }
+=======
+    if (word == "All") {
+      setCategory(projects);
+    }
+
+    if (word == "WebDesign") {
+      const filtered = projects.filter((item) => item.type === "WebDesign");
+      setCategory(filtered);
+      console.log(filtered);
+    }
+
+    if (word == "Graphics") {
+      const filtered = projects.filter((item) => item.type === "Graphics");
+      setCategory(filtered);
+      console.log(filtered);
+    }
+
+    if (word == "Apps") {
+      const filtered = projects.filter((item) => item.type === "Apps");
+      setCategory(filtered);
+      console.log(filtered);
+    }
+>>>>>>> f6c81485ad3b147ed925bade7d3eba6948fbd7c6
   };
 
   return (
@@ -119,7 +152,11 @@ if(word=='Apps'){
           modules={[EffectCoverflow, Pagination]}
           className="mySwiper"
         >
+<<<<<<< HEAD
           {category?.map((project) => (
+=======
+          {/* {category.map((project) => (
+>>>>>>> f6c81485ad3b147ed925bade7d3eba6948fbd7c6
             <div key={project.id} className="projectcard">
               <SwiperSlide>
                 <img src={`http://localhost:8000/storage/${project.img_url}`} />
@@ -130,7 +167,11 @@ if(word=='Apps'){
                 </a>
               </SwiperSlide>
             </div>
+<<<<<<< HEAD
           ))}
+=======
+          ))} */}
+>>>>>>> f6c81485ad3b147ed925bade7d3eba6948fbd7c6
         </Swiper>
       </div>
     </div>
