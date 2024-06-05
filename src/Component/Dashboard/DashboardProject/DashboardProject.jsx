@@ -86,6 +86,11 @@ export default function DashboardProject() {
         // تحديث حالة النموذج عند تغيير الإدخالات
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+      const handleImage = (e) => {
+        // تحديث حالة النموذج عند تغيير الإدخالات
+        setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+      };
+     
     
     const handleSubmit = async (e) => {
         console.log(e.target)
@@ -109,10 +114,13 @@ export default function DashboardProject() {
             width: "100%",
         }}
         >
-        <form action="" onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
             <input type="text" placeholder="name" name="name" id="" value={formData.name} onChange={handleChange}/>
             <input type="text" placeholder="description" name="description" id="" value={formData.description} onChange={handleChange}/>
-            <input type="file" placeholder="img url" name="img_url" value={formData.img_url} onChange={handleChange}/>
+            <input type="file" placeholder="img url" name="img_url" 
+            onChange={handleImage}
+        
+            />
             <input type="text" placeholder="link" name="link" id="" value={formData.link} onChange={handleChange}/>
             <input type="number" placeholder="type id" name="type_id" id="" value={formData.type_id} onChange={handleChange}/>
             <input type="submit" value="submit" color="success" />

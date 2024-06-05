@@ -1,15 +1,17 @@
 import axios from "axios";
 
 export const sendData = async (data) => {
+  //console.log(data)
   return await axios.post('http://127.0.0.1:8000/api/addprojects', {
     name: data.name,
     description: data.description,
-    img_url: data.imgUrl,
+    img_url: data.img_url,
     link: data.link,
-    type_id: data.typeId,
+    type_id: data.type_id,
   },{
     headers: {
-      Authorization: `Bearer ${window.localStorage.getItem('token')}`
+      Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+      "content-type": "multipart/form-data",
     }
   })
   .then(function (response) {
