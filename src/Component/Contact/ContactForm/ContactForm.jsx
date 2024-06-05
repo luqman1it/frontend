@@ -3,7 +3,7 @@ import './ContactForm.css'
 import axios from 'axios';
 
 const ContactForm = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);   
  
   const [formMessage, setFormMessage] = useState({
     name: '',
@@ -20,8 +20,8 @@ const ContactForm = () => {
 
 
     e.preventDefault();  
-    setIsClicked(true)
-    console.log(isClicked)
+    setIsLoading(true);
+    console.log(isLoading)
     axios.post('http://127.0.0.1:8000/api/StoreContact', {
       name: formMessage.name,
       email: formMessage.email,
@@ -53,7 +53,7 @@ const ContactForm = () => {
         <input className='aj-subject-input' value={formMessage.subject} onChange={(e) => setFormMessage({ ...formMessage, subject: e.target.value })} placeholder='Subject' type="text" name="subject" />
       </div>
       <textarea className='aj-message-textarea' value={formMessage.message} onChange={(e) => setFormMessage({ ...formMessage, message: e.target.value })} placeholder='Message *' name="message" rows={6} ></textarea>
-      <button disabled={isClicked}  type="submit">Submit</button>
+      <button disabled={isLoading}  type="submit">Submit</button>
     </form>
   )
 }

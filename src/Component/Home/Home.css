@@ -119,6 +119,10 @@
 
 }
 
+
+
+@me
+
 @media (max-width: 768px) {
     .la-home .header .burger-menu {
         display: block;
@@ -127,6 +131,14 @@
     .la-home .navbar {
         display: none;
         /* Hide navbar links on small screens */
+    }
+   
+
+    .la-home .text-hero p{
+
+         font-size: 1.5rem;
+         font-weight: 700;
+
     }
 
 
@@ -194,6 +206,40 @@
 .la-home .button-group .btn:nth-child(2):hover {
     background-color: var(--button-color);
     transition: 1s;
+
+
+}
+
+.la-home .button-group .btn:last-child {
+    background-color: var(--font-color);
+    transition: 1s;
+}
+
+.la-home .button-group .btn:last-child:hover {
+    background-color: var(--button-color);
+    transition: 1s;
+
+
+}
+
+
+dia (max-width: 1024px) {
+
+    
+
+
+    .la-home .text-hero p{
+
+        font-size: 2.5rem;
+        font-weight: 700;
+
+   }
+
+
+   .la-home .button-group  {
+   
+    color: aqua;  
+}
 
 
 }

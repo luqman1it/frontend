@@ -1,5 +1,6 @@
 import React from 'react'
 import './Home.css'
+import resume from '../../assets/Resume.pdf';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 export default function Home() {
@@ -53,7 +54,8 @@ export default function Home() {
                     <h1><span>Our Name is</span><br />X6 full stack</h1>
                     <div className="button-group">
                         <a className="btn" href="#contact">Contact Me</a>
-                        <a className="btn" href="#project">My Project</a>
+                        <a className="btn" href="#project">My Projects</a>
+                        <a className="btn" href={resume}  download='cv'>My Cv</a>
                     </div>
                 </div>
             </div>
