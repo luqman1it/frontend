@@ -1,0 +1,55 @@
+
+.side-bar-right .container-table-form{
+display: flex;
+flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px 10px ;
+
+    width: 100%;
+    padding: 10px; 
+     margin:100px auto; 
+height: 30vh;
+    background-color: #eee;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0,.4);
+}
+.container-table-form .form-skill
+{
+    margin: auto;
+    max-width:90%;
+    padding: 10px;
+    display: flex;
+}
+.container-table-form .form-skill .form-label {
+ color: black;
+ font-size: 17px;
+ align-items: left;
+ width: fit-content;
+ text-transform: capitalize;
+}
+.container-table-form .form-skill input{
+    border: none;
+    outline: none;
+    color: #0c0c0c;
+    padding: 5px;
+    border-radius: 4px 10px ;
+}
+.container-table-form .form-skill input::placeholder{
+    color: #080707;
+    padding-left: 5px;
+    font-size: 14px;
+}
+
+.container-table-form .form-skill .Add-btn
+{
+    border: none;
+    outline: none;
+    background-color:var(--button-color);
+    color: white;
+    width: 50%;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: auto;
+}
