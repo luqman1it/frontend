@@ -4,7 +4,9 @@ export const projects = async () => {
   return await axios
     .get("http://127.0.0.1:8000/api/allprojects")
     .then((res) => {
+
     //  console.log(res)
+
       return res.data.projects;
     })
     .catch((error) => {

@@ -4,6 +4,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { getData } from "./getData";
 import { sendData } from "./sendData";
+import { deleteData } from "./deleteData";
 
 export default function DashboardProject() {
     const [projects, setProjects] = useState([]);
@@ -14,6 +15,7 @@ export default function DashboardProject() {
         setProjects(data);
         });
     }, []);
+
 
     const handleDelete = () => {
         const updatedProjects = projects.filter(
@@ -31,14 +33,47 @@ export default function DashboardProject() {
         const image_url = window.prompt("Enter Image URL:");
         const link = window.prompt("Enter Link:");
 
-        if (!projectName || !description) {
-            return;
+    // const handleDelete = () => {
+    //     const updatedProjects = projects.filter(
+    //     (project) => !deletedRows[deletedRows.length - 1].includes(project)
+    //     );
+    //     setProjects(updatedProjects);
+    //     setDeletedRows([]);
+    //     console.log("updated", updatedProjects);
+    // };
+
+    const handleDelete = async () => {
+        const deletedProjectIds = deletedRows.flat().map(row => row.id);
+        try {
+            await Promise.all(deletedProjectIds.map(id => deleteData(id)));
+            const updatedProjects = projects.filter(
+                (project) => !deletedRows.flat().includes(project)
+            );
+            setProjects(updatedProjects);
+            setDeletedRows([]);
+            console.log("updated", updatedProjects);
+        } catch (error) {
+            console.error("Error deleting projects:", error);
         }
+    };
+
+    // const handleAdd = () => {
+
+
+    //     const projectName = window.prompt("Enter project name:");
+    //     const description = window.prompt("Enter Description:");
+    //     const image_url = window.prompt("Enter Image URL:");
+    //     const link = window.prompt("Enter Link:");
+
+    //     if (!projectName || !description) {
+    //         return;
+    //     }
         
-        let newId = 1;
-        if (projects.length > 0) {
-            newId = Math.max(...projects.map(project => project.id)) + 1;
-        }
+    //     let newId = 1;
+    //     if (projects.length > 0) {
+    //         newId = Math.max(...projects.map(project => project.id)) + 1;
+    //     }
+
 
         const newProject = {
             id: newId,
@@ -54,6 +89,21 @@ export default function DashboardProject() {
         setProjects(updatedProjects);
     };
 
+    //     const newProject = {
+    //         id: newId,
+    //         name: projectName,
+    //         description: description,
+    //         img_url: image_url,
+    //         link: link
+    //     }
+        
+    //     sendData(newProject);
+
+    //     const updatedProjects = [...projects, newProject];
+    //     setProjects(updatedProjects);
+    // };
+
+
     const columns = useMemo(() => {
         return [
         { field: "id", headerName: "ID", width: 70, filterable: false },
@@ -65,6 +115,27 @@ export default function DashboardProject() {
         ];
     });
 
+    const [formData, setFormData] = useState({});
+    const handleChange = (e) => {
+        // تحديث حالة النموذج عند تغيير الإدخالات
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
+    
+    const handleSubmit = async (e) => {
+        console.log(e.target)
+        e.preventDefault(); // منع إعادة تحميل الصفحة
+    
+        try {
+          await sendData(formData); // استدعاء sendData مع بيانات النموذج
+          // إعادة تعيين النموذج بعد الإرسال الناجح
+            setFormData({
+                // إعادة تعيين حالة النموذج إلى القيم الافتراضية
+            });
+            } catch (error) {
+            console.error('Failed to send data:', error);
+            }
+        };
+
     return (
         <Box
         sx={{
@@ -72,14 +143,22 @@ export default function DashboardProject() {
             width: "100%",
         }}
         >
-        <Button
+        <form action="" onSubmit={handleSubmit}>
+            <input type="text" placeholder="name" name="name" id="" value={formData.name} onChange={handleChange}/>
+            <input type="text" placeholder="description" name="description" id="" value={formData.description} onChange={handleChange}/>
+            <input type="file" placeholder="img url" name="img_url" value={formData.img_url} onChange={handleChange}/>
+            <input type="text" placeholder="link" name="link" id="" value={formData.link} onChange={handleChange}/>
+            <input type="number" placeholder="type id" name="type_id" id="" value={formData.type_id} onChange={handleChange}/>
+            <input type="submit" value="submit" color="success" />
+        </form>
+        {/* <Button
             color="success"
             variant="contained"
             onClick={handleAdd}
             sx={{ textAlign: "center", alignItems: "center" }}
         >
             Add Project
-        </Button>
+        </Button> */}
         <Typography
             variant="h2"
             component="h2"

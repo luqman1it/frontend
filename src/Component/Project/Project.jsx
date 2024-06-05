@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -29,6 +30,31 @@ export default function Project() {
     });
   }, []);
 
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+import "./Project.css";
+
+import { projects } from "./projectsData.js";
+
+// import required modules
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import SectionHeader from "../SectionHeader/SectionHeader.jsx";
+
+
+//declaring variables
+
+
+export default function Project() {
+  const [category, setCategory] = useState([projects]);
+  useEffect(() => {
+    projects().then((data) => {
+      setCategory(data);
+    });
+  }, []);
 
 
   const handleFilter = (e) => {
@@ -77,6 +103,31 @@ if(word=='Apps'){
 }
   };
 
+
+    if (word == "All") {
+      setCategory(projects);
+    }
+
+    if (word == "WebDesign") {
+      const filtered = projects.filter((item) => item.type === "WebDesign");
+      setCategory(filtered);
+      console.log(filtered);
+    }
+
+    if (word == "Graphics") {
+      const filtered = projects.filter((item) => item.type === "Graphics");
+      setCategory(filtered);
+      console.log(filtered);
+    }
+
+    if (word == "Apps") {
+      const filtered = projects.filter((item) => item.type === "Apps");
+      setCategory(filtered);
+      console.log(filtered);
+    }
+  };
+
+
   return (
     <div id="project">
       <SectionHeader title="My Projects" />
@@ -119,7 +170,11 @@ if(word=='Apps'){
           modules={[EffectCoverflow, Pagination]}
           className="mySwiper"
         >
+
           {category?.map((project) => (
+
+          {/* {category.map((project) => (
+
             <div key={project.id} className="projectcard">
               <SwiperSlide>
                 <img src={`http://localhost:8000/storage/${project.img_url}`} />
@@ -130,7 +185,11 @@ if(word=='Apps'){
                 </a>
               </SwiperSlide>
             </div>
+
           ))}
+
+          ))} */}
+
         </Swiper>
       </div>
     </div>
