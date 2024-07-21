@@ -1,55 +1,24 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination } from "swiper/modules";
+
+import { projects } from "./projectsData.js";
+
+import SectionHeader from "../SectionHeader/SectionHeader.jsx";
 
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import "./Project.css";
 
-import { projects } from "./projectsData.js";
-
-// import required modules
-import { EffectCoverflow, Pagination } from "swiper/modules";
-import SectionHeader from "../SectionHeader/SectionHeader.jsx";
-
-//declaring variables
-
-export default function Project() {
-
-  const [category, setCategory] = useState([]);
 
 
 
-  useEffect(() => {
-    
-    projects().then((data) => {
-      setCategory(data);
-    });
-  }, []);
-
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-
-import "./Project.css";
-
-import { projects } from "./projectsData.js";
-
-// import required modules
-import { EffectCoverflow, Pagination } from "swiper/modules";
-import SectionHeader from "../SectionHeader/SectionHeader.jsx";
-
-
-//declaring variables
-
-
-export default function Project() {
+const Project = () => {
   const [category, setCategory] = useState([projects]);
+
   useEffect(() => {
     projects().then((data) => {
       setCategory(data);
@@ -59,74 +28,50 @@ export default function Project() {
 
   const handleFilter = (e) => {
     let word = e.target.value;
-    console.log(word);
+    
 
     
-    if (word=='All'){
-      projects().then(res => {
-        setCategory(res);
-        console.log(res)
-      })
-    
-  }
+          if (word=='All'){
+            projects().then(res => {
+              setCategory(res);
+              console.log(res)
+            })
+          
+        }
 
-  if(word=='WebDesign'){
-    projects().then(res => {
-      console.log(res)
-      const filtered=res.filter(item=> item.type.name === "WebDesign");
-      setCategory(filtered)
-      console.log(filtered)
-    })
-      
-;       
-}
+          if(word=='WebDesign'){
+            projects().then(res => {
+              console.log(res)
+              const filtered=res.filter(item=> item.type.name === "WebDesign");
+              setCategory(filtered)
+              console.log(filtered)
+            })
+              
+            
+        }
 
-if(word=='Graphics'){
-  projects().then(res => {
-    console.log(res)
-    const filtered=res.filter(item=> item.type.name === "Graphics");
-    setCategory(filtered)
-    console.log(filtered)
-  })
-;       
-}
-
-
-if(word=='Apps'){
-  projects().then(res => {
-    console.log(res)
-    const filtered=res.filter(item=> item.type.name === "Apps");
-    setCategory(filtered)
-    console.log(filtered)
-  })
-;          
-}
-  };
+        if(word=='Graphics'){
+          projects().then(res => {
+            console.log(res)
+            const filtered=res.filter(item=> item.type.name === "Graphics");
+            setCategory(filtered)
+            console.log(filtered)
+          })
+            
+        }
 
 
-    if (word == "All") {
-      setCategory(projects);
-    }
-
-    if (word == "WebDesign") {
-      const filtered = projects.filter((item) => item.type === "WebDesign");
-      setCategory(filtered);
-      console.log(filtered);
-    }
-
-    if (word == "Graphics") {
-      const filtered = projects.filter((item) => item.type === "Graphics");
-      setCategory(filtered);
-      console.log(filtered);
-    }
-
-    if (word == "Apps") {
-      const filtered = projects.filter((item) => item.type === "Apps");
-      setCategory(filtered);
-      console.log(filtered);
-    }
-  };
-
+        if(word=='Apps'){
+          projects().then(res => {
+            console.log(res)
+            const filtered=res.filter(item=> item.type.name === "Apps");
+            setCategory(filtered)
+            console.log(filtered)
+          })
+                
+        }
+  
+      }
 
   return (
     <div id="project">
@@ -173,7 +118,6 @@ if(word=='Apps'){
 
           {category?.map((project) => (
 
-          {/* {category.map((project) => (
 
             <div key={project.id} className="projectcard">
               <SwiperSlide>
@@ -188,10 +132,12 @@ if(word=='Apps'){
 
           ))}
 
-          ))} */}
+      
 
         </Swiper>
       </div>
     </div>
   );
 }
+
+export default Project
