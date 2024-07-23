@@ -10,8 +10,7 @@ import axios from 'axios';
 
 export default function DashboardMessage() {
 
-  const [ messages,setMessages] = useState([]);
-  
+  const [ messages,setMessages] = useState([])
 
   
 
@@ -19,8 +18,6 @@ export default function DashboardMessage() {
   useEffect(() => {
     getData().then((data) => {
       setMessages(data)
-      getData();
-      
          
       });
   },[]);
@@ -29,16 +26,21 @@ export default function DashboardMessage() {
 
  
   const handleDelete = async (event,contact) => {
-
-
-   console.log(contact.id);
+     
+    
     await axios.delete(`http://127.0.0.1:8000/api/DeleteContact/${contact.id}`,{
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem('token')}`
       }
     }).then(res => {
      
-          localStorage.setItem('token', res.data.authorisation.token)
+         if(res.status===200){
+          getData().then((data) => {
+            setMessages(data)
+               
+            });
+          alert('deleted')
+         }
            
   })
 
@@ -88,6 +90,7 @@ export default function DashboardMessage() {
         columns={columns}
         rows ={messages}
         rowsLoadingMode="server"
+      
     >
     </DataGrid>
       

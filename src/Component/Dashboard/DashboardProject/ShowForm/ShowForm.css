@@ -1,6 +1,5 @@
 .dashboard-project {
     position: fixed;
-      z-index: 1;
       left: 0;
       top: 0; 
       width: 100%;
@@ -11,12 +10,16 @@
       background-color: rgba(0,0,0, 0.4);
   }
   .ra-show-form {
-    margin: 0 auto;
+    margin:  auto;
+    position: absolute;
+    z-index: 1;
     width: 50%;
-    height: 300px;
+    padding: 20px;
     border: 1px solid transparent;
     background-color: white;
     border-radius: 10px;
+    transform: translate(100px,100px);
+    transition: visibility 0ms linear;
 }
 
 
@@ -37,7 +40,7 @@
     width: 34%;
   border:2px solid var(--button-color);
   border-radius: 5px;
-  padding: 4px;
+  padding: 10px;
   color: var(--font-color);
 }
 

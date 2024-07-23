@@ -4,21 +4,47 @@ import { Box, Button, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import ShowForm from './ShowForm/ShowForm';
 import { getData } from '../../../../../DashboardProject/getData';
+import axios from 'axios';
 
 
 
 
 const DashboardProject = () => {
-   const [showform,setShowForm]=useState(false);
-   const [buttonclicked,setButtonClicked]=useState(true); 
+   const [buttonclicked,setButtonClicked]=useState(false); 
    const [projects, setProjects] = useState([]);
-   const [deletedRows, setDeletedRows] = useState([]);
-
+   
    useEffect(() => {
        getData().then((data) => {
        setProjects(data);
        });
    }, []);
+
+
+   
+ 
+ const handleDelete = async (event,project) => {
+     
+    
+    await axios.delete(`http://127.0.0.1:8000/api/deleteprojects/${project.id}`,{
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`
+      }
+    }).then(res => {
+     
+         if(res.status===200){
+            getData().then((data) => {
+                setProjects(data);
+                });
+          alert('deleted')
+         }
+           
+  })   }
+
+   const handleAdd=()=>{
+  setButtonClicked(true)
+   
+    }
+
 
 
    const columns = useMemo(() => {
@@ -29,45 +55,37 @@ const DashboardProject = () => {
      { field: "img_url", headerName: "Image Url", width: 130 },
      { field: "link", headerName: "Link", width: 130 },
      { field: "type_id", headerName: "Type ID", width: 130 },
+     {
+        field: "action",
+        headerName: "Action",
+        sortable: false,
+        renderCell: (params) =>
+          <Button  color='error' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
+            Delete
+          </Button>
+      },
      ];
  });
 
- const handleDelete = () => {
-    const updatedProjects = projects.filter(
-    (project) => !deletedRows[deletedRows.length - 1].includes(project)
-    );
-    setProjects(updatedProjects);
-    setDeletedRows([]);
-    console.log("updated", updatedProjects);
-};
-
-    const handleAdd=()=>{
-  setShowForm(true)
-  setButtonClicked(false)
-    }
 
 
   return (
-<>
+<div className='ra-dashboard-projects' >
 
-  
 
- 
-
-{buttonclicked ? 
   <Box
         sx={{
             height: 400,
             width: "100%",
         }}
         >
-      
-     <Button
-            className='add-project-btn'
+      {buttonclicked ? <ShowForm/>
+     : (<>
+             <Button
             color="success"
             variant="contained"
             onClick={handleAdd}
-            sx={{ textAlign: "center", alignItems: "center" }}
+            sx={{ fontWeight:'800',textAlign: "center", alignItems: "center" }}
         >
             Add new Project
         </Button> 
@@ -79,36 +97,21 @@ const DashboardProject = () => {
             Projects
         </Typography>
         <DataGrid
+        sx={{textAlign: "center"  }}
             columns={columns}
             rows={projects}
-            checkboxSelection
-            onRowSelectionModelChange={(selectionModel) => {
-            const rowIds = selectionModel.map((rowId) => parseInt(String(rowId)));
-            const rowsToDelete = projects.filter((row) =>
-                rowIds.includes(row.id)
-            );
-            setDeletedRows([...deletedRows, rowsToDelete]);
-            }}
+            
         ></DataGrid>
 
-        <Button
-            color="error"
-            variant="contained"
-            onClick={handleDelete}
-            sx={{ textAlign: "center", mt: "10px", alignItems: "center" }}
-        >
-            Delete
-        </Button>
-        </Box> : ''}
-   
+        </>
 
-  {showform ?  
-        <ShowForm/>
-      : ''}
-       
+   
+)}
+
+</Box>
     
    
-    </>
+    </div>
   )
 }
 

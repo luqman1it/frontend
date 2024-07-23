@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './Dashboard.css'
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import logo from '../../images/focal x.svg'
 import userIcon from '../../images/abc.jpg'
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -17,8 +18,8 @@ export default function Dashboard() {
     };
     return (
         <div className='dashboard'>
-            <div className="dash-header">
-                <h2>Focal X</h2>
+             <div className="dash-header">
+               <img src={logo}/>
                 <div >
                     <li onClick={handleLogOut} className='log-out' >LogOut</li>
                 </div>

@@ -1,17 +1,29 @@
+.dashboard{
+    display: flex;
+    flex-direction: column;
+  
+    width: 100%;
+}
+
+
+
 .dash-header {
     background-color: var(--button-color);
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 12px 50px;
 }
 
-.dash-header h2 {
-    color: #252523;
+.dash-header img {
+   width: 45px;
 }
 
 .dashboard .dash-app {
     display: flex;
+    flex-direction: row;
+    width: 100%;
 
 }
 
@@ -30,7 +42,7 @@
 }
 
 .dashboard .side-bar {
-    width: 250px;
+    width: 25%;
     background-color: #252523;
     height: 100vh;
     display: flex;
@@ -47,7 +59,7 @@
 
 .dashboard .side-bar-right {
     padding: 30px;
-    width: 100%;
+    width: 75%;
  
 }
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 
-import { projects } from "./projectsData.js";
+import { getProjects } from "./projectsData.js";
 
 import SectionHeader from "../SectionHeader/SectionHeader.jsx";
 
@@ -12,92 +12,67 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import "./Project.css";
+import { getTypes } from "./getTypes.js";
 
 
 
 
 const Project = () => {
-  const [category, setCategory] = useState([projects]);
+  
+
+  const [projects, setProjects] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [category, setCategory] = useState('All');
 
   useEffect(() => {
-    projects().then((data) => {
-      setCategory(data);
+    getProjects().then((data) => {
+      setProjects(data);
     });
+
+    getTypes().then((data) => {
+
+      setTypes(data);
+    });
+
+    
   }, []);
 
 
   const handleFilter = (e) => {
-    let word = e.target.value;
+      let word=e.target.value
+      setCategory(word)
+
+      if (word=='All'){
+        getProjects().then(res => {
+          setProjects(res);
+        })
+      
+    }
+   else{
+      getProjects().then(res => {
+        const filtered=res.filter(item=> item.type.name === word);
+        setProjects(filtered)
     
+      })}
+    }
 
-    
-          if (word=='All'){
-            projects().then(res => {
-              setCategory(res);
-              console.log(res)
-            })
-          
-        }
-
-          if(word=='WebDesign'){
-            projects().then(res => {
-              console.log(res)
-              const filtered=res.filter(item=> item.type.name === "WebDesign");
-              setCategory(filtered)
-              console.log(filtered)
-            })
-              
-            
-        }
-
-        if(word=='Graphics'){
-          projects().then(res => {
-            console.log(res)
-            const filtered=res.filter(item=> item.type.name === "Graphics");
-            setCategory(filtered)
-            console.log(filtered)
-          })
-            
-        }
-
-
-        if(word=='Apps'){
-          projects().then(res => {
-            console.log(res)
-            const filtered=res.filter(item=> item.type.name === "Apps");
-            setCategory(filtered)
-            console.log(filtered)
-          })
-                
-        }
-  
-      }
+      
 
   return (
     <div id="project">
       <SectionHeader title="My Projects" />
       <div className="nav_filterbuttons">
-        <button className="filterbutton" value="All" onClick={handleFilter}>
-          All
-        </button>
-        <button
-          className="filterbutton"
-          value="WebDesign"
-          onClick={handleFilter}
-        >
-          WebDesign
-        </button>
-        <button
-          className="filterbutton"
-          value="Graphics"
-          onClick={handleFilter}
-        >
-          Graphics
-        </button>
-        <button className="filterbutton" value="Apps" onClick={handleFilter}>
-          Apps
-        </button>
-      </div>
+         <button className="filterbutton" value='All' onClick={handleFilter}>
+           All
+          </button>
+        {types.map((type)=>{
+          return (
+          <button className="filterbutton" id={type.id} value={type.name} onClick={handleFilter}>
+            {type.name}
+          </button>)
+        })}
+        
+       </div>
       <div className="projectswiper">
         <Swiper
           effect={"coverflow"}
@@ -116,7 +91,7 @@ const Project = () => {
           className="mySwiper"
         >
 
-          {category?.map((project) => (
+          {projects?.map((project) => (
 
 
             <div key={project.id} className="projectcard">
