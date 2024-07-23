@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import "./AddSkills.css"
+import "./AddType.css"
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-function EditSkill() {
+function EditType() {
     const [data,setData]=useState({})
     const[name,setName]=useState("")
     const navigate=useNavigate()
@@ -24,7 +24,7 @@ function EditSkill() {
             Authorization: `Bearer ${window.localStorage.getItem('token')}`
         }
     }).then(res=>{console.log(res);
-        navigate('/dashboard/skills')
+        navigate('/dashboard/types')
     })
    }
   return (
@@ -33,15 +33,15 @@ function EditSkill() {
 <div className='container-table-form'>
 
 <form onSubmit={()=>sendData(event)} className='form-skill'>
-<label htmlFor="" className='form-label'>skill</label>
+<label htmlFor="" className='form-label'>type</label>
 <input type="text"  placeholder='enter your skill' onChange={(event)=>setName(event.target.value)} defaultValue={data.name} />
 <button variant="primary" type="submit" className='Add-btn'>
-  Edit skill 
-</button> 
+  Edit type
+</button>
 </form>
 </div>
     </div>
   )
 }
 
-export default EditSkill
+export default EditType

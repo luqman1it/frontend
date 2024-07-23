@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import './ShowSkill.css'
-function ShowSkill() {
+import './ShowType.css'
+function ShowType() {
     const[data,setData]=useState({name:""})
     const params=useParams()
     const navigate=useNavigate()
@@ -11,7 +11,7 @@ function ShowSkill() {
       axios.get("http://127.0.0.1:8000/api/showtypes/"+ params.id).then(res=>setData(res.data.types))
     },[])
 const back=()=>{
-    navigate('/dashboard/Skills')
+    navigate('/dashboard/types')
 }
   return (
     <>
@@ -25,11 +25,11 @@ const back=()=>{
 </p>
 </div>
     </div>
- 
+
 
 </>
-    
+
   )
 }
 
-export default ShowSkill
+export default ShowType

@@ -33,8 +33,9 @@ export default function Dashboard() {
                             <NavLink className='link' to='/dashboard/box'><i className="fa-solid fa-house"></i> Dashboard</NavLink>
                             <NavLink className='link' to='/dashboard/project'><i className="fa-solid fa-list-check"></i> Project</NavLink>
                             <NavLink className='link' to='/dashboard/message'><i className="fa-solid fa-message"></i> Message</NavLink>
-                            <NavLink className='link'  to='/dashboard/skills'><i className="fa-solid fa-building"></i> Skills</NavLink>
-                       
+                            <NavLink className='link'  to='/dashboard/types'><i className="fa-solid fa-building"></i> types</NavLink>
+                            <NavLink className='link'  to='/dashboard/skills'><i className="fa-solid fa-building"></i> skills</NavLink>
+
                         </div>
                     </div>
                 </div>
