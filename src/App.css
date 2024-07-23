@@ -38,6 +38,19 @@ li {
   list-style-type: none;
 }
 
+
+
+@keyframes dropTop {
+
+  0%{
+    transform: translateY(-100%);
+    
+  }
+  100%{
+    transform: translateY(0%);
+  }
+  
+}
 @media (max-width:444px) {
   .container {
     padding-left: 20px;

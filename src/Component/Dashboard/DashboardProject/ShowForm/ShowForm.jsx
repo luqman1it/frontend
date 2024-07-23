@@ -13,9 +13,29 @@ const ShowForm = () => {
     const [projectdesc,setProjectDesc]=useState('')
     const [projectnLink,setProjectLink]=useState('')
     const [projecttype,setProjectType]=useState(1)
+    const [projecttypes,setProjectTypes]=useState([])
     const [projectFile,setProjectFile]=useState(null)
 
+    const getTypes = async () => {
+      return await axios
+        .get("http://127.0.0.1:8000/api/alltypes")
+        .then((res) => {
+    
+    
+          return res.data.types;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
 
+
+
+    useEffect(()=>{
+      getTypes().then(res=>{
+        setProjectTypes(res)
+      })
+    },[])
   
     const handleCloseForm = () =>{
       setCloseForm(true)
@@ -77,18 +97,27 @@ const ShowForm = () => {
      {!closeForm ?
 
      <>
-      <div className='dashboard-project' onClick={handleCloseForm} />
-      <div className='ra-show-form' >
+      <div className='dashboard-project'  onClick={handleCloseForm} />
+      <div className='ra-show-form'  >
+      
+       
+        
        <form  className='ra-form' onSubmit={(e)=> handleSubmit(e)} >
-            
+           
             <input type="text" placeholder="Project Name" name="name" value={projectname} onChange={(e) =>setProjectName( e.target.value)}/>
             <input type="text" placeholder="Project description" name="description"value={projectdesc} onChange={(e) =>setProjectDesc( e.target.value)}/>
             <input type="text" placeholder="Project link" name="link" value={projectnLink} onChange={(e) =>setProjectLink( e.target.value)} />
-            <input type="number" placeholder="Project type" name="type_id" value={projecttype} onChange={(e) =>setProjectType( e.target.value)} />
+            <select name='types'>
+              {projecttypes.map((type,index)=>{
+               return   <option  key={type.id} onChange={(e) =>setProjectType(type.id)}>{type.name}</option>
+              })}
+            
+            </select>
+            {/* <input type="number" placeholder="Project type" name="type_id" value={projecttype} onChange={(e) =>setProjectType( e.target.value)} /> */}
             <input type="file" id="input-file" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
             <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
         </form> 
-      </div> </>:(  <DashboardProject/>)}
+      </div> </>:  (  <DashboardProject/>)}
 
 
         

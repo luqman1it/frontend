@@ -7,6 +7,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      filter: blur(80px);
       background-color: rgba(0,0,0, 0.4);
   }
   .ra-show-form {
@@ -14,14 +15,13 @@
     position: absolute;
     z-index: 1;
     width: 50%;
-    padding: 20px;
+    padding: 20px; 
     border: 1px solid transparent;
     background-color: white;
-    border-radius: 10px;
-    transform: translate(100px,100px);
-    transition: visibility 0ms linear;
+    border-radius: 20px;
+    box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.4);
+    animation: dropTop .3s linear;
 }
-
 
 
 .ra-show-form .ra-form{
@@ -37,13 +37,21 @@
 }
 
 .ra-show-form .ra-form input{
-    width: 34%;
+ width: 34%;
   border:2px solid var(--button-color);
   border-radius: 5px;
   padding: 10px;
   color: var(--font-color);
 }
 
+
+.ra-show-form .ra-form select{
+  width: 38%;
+  border:2px solid var(--button-color);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--font-color);
+}
 
 .ra-show-form .ra-form  #input-file{
     border-color: transparent;
