@@ -3,16 +3,16 @@ import './DashboardProject.css'
 import { Box, Button, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import ShowForm from './ShowForm/ShowForm';
-import { getData } from '../../../../../DashboardProject/getData';
+import { getData } from './getData';
 import axios from 'axios';
 
 
 
 
 const DashboardProject = () => {
-   const [buttonclicked,setButtonClicked]=useState(false); 
+   const [buttonclicked,setButtonClicked]=useState(false);
    const [projects, setProjects] = useState([]);
-   
+
    useEffect(() => {
        getData().then((data) => {
        setProjects(data);
@@ -20,29 +20,29 @@ const DashboardProject = () => {
    }, []);
 
 
-   
- 
+
+
  const handleDelete = async (event,project) => {
-     
-    
+
+
     await axios.delete(`http://127.0.0.1:8000/api/deleteprojects/${project.id}`,{
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem('token')}`
       }
     }).then(res => {
-     
+
          if(res.status===200){
             getData().then((data) => {
                 setProjects(data);
                 });
           alert('deleted')
          }
-           
+
   })   }
 
    const handleAdd=()=>{
   setButtonClicked(true)
-   
+
     }
 
 
@@ -89,7 +89,7 @@ const DashboardProject = () => {
             sx={{ fontWeight:'800',textAlign: "center", alignItems: "center" }}
         >
             Add new Project
-        </Button> 
+        </Button>
         <Typography
             variant="h2"
             component="h2"
@@ -101,17 +101,17 @@ const DashboardProject = () => {
         sx={{textAlign: "center"  }}
             columns={columns}
             rows={projects}
-            
+
         ></DataGrid>
 
         </>
 
-   
+
 )}
 
 </Box>
-    
-   
+
+
     </div>
   )
 }

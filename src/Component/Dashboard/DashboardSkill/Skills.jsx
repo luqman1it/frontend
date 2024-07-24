@@ -13,40 +13,41 @@ export default function Skills() {
 
        const [get,setget] = useState(true)
        const[Skills,setSkills]=useState([])
-       const [buttonclicked,setButtonClicked]=useState(false); 
-       
-           const update=(id)=>{
-            navigate(`/dashboard/EditSkill/${id}`)
+       const [buttonclicked,setButtonClicked]=useState(false);
+const navigate=useNavigate()
+           const update=(event,skill)=>{
+
+            navigate(`/dashboard/EditSkill/${skill.id}`)
            }
             useEffect(() => {
                 getData().then((data) => {
                 setSkills(data);
                 });
             }, []);
-         
+
              const handleAdd=()=>{
-               
+
                 setButtonClicked(true)
-                 
+
              }
 
             const handleDelete = async (event,skill) => {
-     
-    
+
+
                     await axios.delete(`http://127.0.0.1:8000/api/delete-skill/${skill.id}`,{
                       headers: {
                         Authorization: `Bearer ${window.localStorage.getItem('token')}`
                       }
                     }).then(res => {
-                     
+
                          if(res.status===200){
                             getData().then((data) => {
                                 setSkills(data);
                                 });
                           alert('deleted')
                          }
-                           
-                  })  
+
+                  })
                  }
 
 
@@ -60,24 +61,24 @@ export default function Skills() {
                    headerName: "Delete ",
                    sortable: false,
                    renderCell: (params) =>
-    
+
                      <Button  color='error' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
                        Delete
                      </Button>
-                    
+
                  },
                 {
                    field: "Edit",
                    headerName: "Edit ",
                    sortable: false,
                    renderCell: (params) =>
-    
-                     <Button  color='success' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
+
+                     <Button  color='success' variant='contained' onClick={(e)=>update(e,params.row)}>
                        Edit
                      </Button>
-                    
+
                  },
-                 
+
                 ];
             });
   return (
@@ -98,7 +99,7 @@ export default function Skills() {
             sx={{ fontWeight:'800',textAlign: "center", alignItems: "center" }}
         >
             Add new Skill
-        </Button> 
+        </Button>
         <Typography
             variant="h2"
             component="h2"
@@ -110,12 +111,12 @@ export default function Skills() {
         sx={{textAlign: "center"  }}
             columns={columns}
             rows={Skills}
-            
+
         ></DataGrid>
 
         </>
 
-   
+
 )}
 
 </Box>

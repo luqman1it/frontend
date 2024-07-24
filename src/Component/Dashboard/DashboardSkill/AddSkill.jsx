@@ -6,6 +6,8 @@ function AddSkill() {
     const[name,setName]=useState('')
 const[image,setImage]=useState('')
 const navigate=useNavigate()
+const [buttonclicked,setButtonClicked]=useState(false);
+
 
 const sendData=(event)=>{
     event.preventDefault();
@@ -24,7 +26,9 @@ let Data={
 
 
     ).then(res=>{console.log(res);
+   setButtonClicked(false)
         navigate('/dashboard/skills')
+
     })
     .catch(error=>console.log(error))
 }
