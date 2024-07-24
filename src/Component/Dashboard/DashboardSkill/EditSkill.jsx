@@ -1,8 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
-import { toast } from "react-toastify"
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function EditSkill() {
@@ -41,8 +39,7 @@ function EditSkill() {
                 }
               );
               console.log(response.data.skill);
-              navigate("/dashboard/skills"),
-              toast.success("Success Notification !");
+              navigate("/dashboard/skills")
 
                 } catch (error) {
               console.error(error);

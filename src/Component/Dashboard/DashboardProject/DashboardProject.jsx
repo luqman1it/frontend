@@ -55,6 +55,7 @@ const DashboardProject = () => {
      { field: "img_url", headerName: "Image Url", width: 130 },
      { field: "link", headerName: "Link", width: 130 },
      { field: "type_id", headerName: "Type ID", width: 130 },
+     { field: "skills", headerName: "Skills", width: 130 },
      {
         field: "action",
         headerName: "Action",
