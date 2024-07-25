@@ -5,19 +5,25 @@ import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { Box, Button, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import AddSkill from "./AddSkill"
 import ShowForm from "./ShowForm/ShowForm"
 import { getData } from "./getData"
+import EditForm from "./EditForm/EditForm"
 export default function Skills() {
 
 
        const [get,setget] = useState(true)
        const[Skills,setSkills]=useState([])
        const [buttonclicked,setButtonClicked]=useState(false); 
-       
-           const update=(id)=>{
-            navigate(`/dashboard/EditSkill/${id}`)
-           }
+       const [editbuttonclicked,setEditButtonClicked]=useState(false); 
+        const navigate=useNavigate()
+
+
+
+
+         
+
+
+
             useEffect(() => {
                 getData().then((data) => {
                 setSkills(data);
@@ -29,6 +35,13 @@ export default function Skills() {
                 setButtonClicked(true)
                  
              }
+
+          
+             const handleEdit=(id)=>{
+              console.log(id)
+              navigate(`/dashboard/EditForm/${id}`)
+             }
+  
 
             const handleDelete = async (event,skill) => {
      
@@ -72,7 +85,7 @@ export default function Skills() {
                    sortable: false,
                    renderCell: (params) =>
     
-                     <Button  color='success' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
+                     <Button  color='success' variant='contained' onClick={(e)=>handleEdit(params.row.id)}>
                        Edit
                      </Button>
                     
@@ -113,10 +126,14 @@ export default function Skills() {
             
         ></DataGrid>
 
+
+
         </>
 
    
 )}
+
+{editbuttonclicked && <EditForm/>}
 
 </Box>
     </div>

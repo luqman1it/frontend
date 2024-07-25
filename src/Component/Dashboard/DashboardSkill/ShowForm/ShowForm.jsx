@@ -78,6 +78,9 @@ const ShowForm = () => {
             <input type="text" placeholder="Skill Name" name="name" value={skillname} onChange={(e) =>setSkillName( e.target.value)}/>
                      <input type="file" id="input-file" onChange={(e)=>  setSkillFile(e.target.files[0])}/>
             <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
+            
+
+
         </form> 
       </div> </>:  (  <DashboardSkill/>)}
 

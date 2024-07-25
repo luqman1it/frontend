@@ -116,6 +116,20 @@ const ShowForm = () => {
             {/* <input type="number" placeholder="Project type" name="type_id" value={projecttype} onChange={(e) =>setProjectType( e.target.value)} /> */}
             <input type="file" id="input-file" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
             <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
+            <div className='ra-skills-checkbox'>
+              <h2>Skills</h2>
+            <label class="container">One
+              <input type="checkbox" checked="checked"/>
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Two
+              <input type="checkbox"/>
+              <span class="checkmark"></span>
+            </label>
+            </div>
+           
+           
+         
         </form> 
       </div> </>:  (  <DashboardProject/>)}
 
