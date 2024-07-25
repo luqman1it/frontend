@@ -136,9 +136,9 @@ const ShowForm = () => {
             <div className='ra-skills-checkbox'>
               <h2>Skills</h2>
               {projectskills.map((skill)=>{
-                return ( <label class="container">{skill.name}
-                  <input type="checkbox" checked="checked"/>
-                  <span class="checkmark"></span>
+                return ( <label class="ra-container">{skill.name}
+                  <input type="ra-checkbox" checked="checked"/>
+                  <span class="ra-checkmark"></span>
                 </label>)
               })}
           

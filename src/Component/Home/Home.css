@@ -158,7 +158,8 @@
 .la-home .text-hero p {
     margin-bottom: 40px;
     color: #7c7b7b;
-    max-width: 70%;
+    width: 70%;
+    font-weight: 700;
 
 }
 
@@ -169,7 +170,6 @@
 
 .la-home .button-group {
     display: flex;
-    flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 40px;
 }
@@ -222,22 +222,21 @@
 }
 
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px)and( min-width:430px) {
 
     
 
 
     .la-home .text-hero p{
 
-        font-size: 2.5rem;
-        font-weight: 700;
+        font-size: 1rem;
+       
 
    }
 
 
    .la-home .button-group  {
-   
-    color: aqua;  
+        flex-direction: column;
 }
 
 
