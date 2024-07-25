@@ -51,7 +51,10 @@ export default function Home() {
                 <div className="text-hero">
                     <h2>Hello !</h2>
                     <p>We are a team of full stack developers ready to bring your projects to life</p>
-                    <h1><span>Our Name is</span><br />X6 full stack</h1>
+                    <h1><span>Our Name is</span><br />
+                    <span className='hero-span2'>
+                    X6 full stack
+                        </span></h1>
                     <div className="button-group">
                         <a className="btn" href="#contact">Contact Me</a>
                         <a className="btn" href="#project">My Projects</a>

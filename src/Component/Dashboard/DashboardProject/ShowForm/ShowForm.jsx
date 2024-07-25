@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
 import DashboardProject from '../DashboardProject';
+import CheckBox from './CheckBox';
 
 const ShowForm = () => {
 
 
     const [closeForm,setCloseForm]=useState(false)
     const [isLoading, setIsLoading] = useState(false);   
+    const [isChecked, setIsChecked] = useState(false);   
 
     const [projectname,setProjectName]=useState('')
     const [projectdesc,setProjectDesc]=useState('')
@@ -135,11 +137,13 @@ const ShowForm = () => {
             <input type="file" id="input-file" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
             <div className='ra-skills-checkbox'>
               <h2>Skills</h2>
+              
               {projectskills.map((skill)=>{
-                return ( <label class="ra-container">{skill.name}
-                  <input type="ra-checkbox" checked="checked"/>
-                  <span class="ra-checkmark"></span>
-                </label>)
+                return (
+
+                  <CheckBox label={skill.name} checked={true}/>
+                
+                )
               })}
           
             </div>

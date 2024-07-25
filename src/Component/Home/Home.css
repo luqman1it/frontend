@@ -120,29 +120,6 @@
 }
 
 
-
-
-@media (max-width: 768px) {
-    .la-home .header .burger-menu {
-        display: block;
-    }
-
-    .la-home .navbar {
-        display: none;
-        /* Hide navbar links on small screens */
-    }
-   
-
-    .la-home .text-hero p{
-
-         font-size: 1.5rem;
-         font-weight: 700;
-
-    }
-
-
-}
-
 .la-home .text-hero {
     position: absolute;
     top: 50%;
@@ -151,8 +128,9 @@
 }
 
 .la-home .text-hero h2 {
-    font-size: 1.6rem;
+    font-size: 4.3rem;
     margin-bottom: 12px;
+
 }
 
 .la-home .text-hero p {
@@ -160,6 +138,7 @@
     color: #7c7b7b;
     width: 70%;
     font-weight: 700;
+    font-size: 1.4rem;
 
 }
 
@@ -168,19 +147,28 @@
     font-size: 2.2rem;
 }
 
+.la-home .text-hero h1 span {
+animation: roll 5s linear infinite 0s;
+}
+
+
+
+
+
 .la-home .button-group {
     display: flex;
     gap: 1.5rem;
     margin-top: 40px;
+    
 }
 
 .la-home .button-group .btn {
     width: 160px;
     height: 40px;
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 800;
-    border-radius: 2px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -222,9 +210,7 @@
 }
 
 
-@media screen and (max-width: 1024px)and( min-width:430px) {
-
-    
+@media screen and (max-width: 1024px) {
 
 
     .la-home .text-hero p{
@@ -238,6 +224,27 @@
    .la-home .button-group  {
         flex-direction: column;
 }
+
+
+}
+
+
+@media (max-width: 768px) {
+    .la-home .header .burger-menu {
+        display: block;
+    }
+
+    .la-home .navbar {
+        display: none;
+        /* Hide navbar links on small screens */
+    }
+   
+
+    .la-home .text-hero p{
+
+         font-size: 1rem;
+
+    }
 
 
 }
