@@ -16,6 +16,8 @@ const ShowForm = () => {
     const [projecttypes,setProjectTypes]=useState([])
     const [projectFile,setProjectFile]=useState(null)
 
+    const [projectskills,setProjectskills]=useState([])
+
     const getTypes = async () => {
       return await axios
         .get("http://127.0.0.1:8000/api/alltypes")
@@ -29,11 +31,27 @@ const ShowForm = () => {
         });
     };
 
+    const getSkills = async () => {
+      return await axios
+        .get("http://127.0.0.1:8000/api/get-skills")
+        .then((res) => {
+    
+    
+          return res.data.skills;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+
 
 
     useEffect(()=>{
       getTypes().then(res=>{
         setProjectTypes(res)
+      })
+      getSkills().then(res=>{
+        setProjectskills(res)
       })
     },[])
   
@@ -115,18 +133,19 @@ const ShowForm = () => {
             </select>
             {/* <input type="number" placeholder="Project type" name="type_id" value={projecttype} onChange={(e) =>setProjectType( e.target.value)} /> */}
             <input type="file" id="input-file" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
-            <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
             <div className='ra-skills-checkbox'>
               <h2>Skills</h2>
-            <label class="container">One
-              <input type="checkbox" checked="checked"/>
-              <span class="checkmark"></span>
-            </label>
-            <label class="container">Two
-              <input type="checkbox"/>
-              <span class="checkmark"></span>
-            </label>
+              {projectskills.map((skill)=>{
+                return ( <label class="container">{skill.name}
+                  <input type="checkbox" checked="checked"/>
+                  <span class="checkmark"></span>
+                </label>)
+              })}
+          
             </div>
+            <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
+            
+           
            
            
          
