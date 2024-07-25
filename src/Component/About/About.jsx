@@ -3,38 +3,17 @@ import SectionHeader from '../SectionHeader/SectionHeader'
 import "./About.css";
 import IconServices from './IconServices/IconServices';
 import { BsWordpress } from 'react-icons/bs';
+import React, { useEffect,  useState } from 'react'
+
+import axios from 'axios';
 
 export default function About() {
-    const iconServices = [{
-        icon: <FaFileCode />,
-        serve: "php Code",
-    },
-    {
-        icon: <FaLaptop />,
-        serve: "Front End",
-    },
-    {
-        icon: <FaPaintBrush />,
-        serve: "Web Design",
-    },
-    {
-        icon: <FaHtml5 />,
-        serve: "Html5",
-    }
+    const [skills,setSkill]=useState([])
 
-        ,
-    {
-        icon: <BsWordpress />,
-        serve: "Wordpress",
-    }
-
-        ,
-    {
-        icon: <FaCss3 />,
-        serve: "Css3",
-    },
-
-    ]
+    useEffect(()=>{
+        axios.get('http://127.0.0.1:8000/api/get-skills').then(res=>setSkill(res.data.skills))
+    },[])
+   
     return (
         <div id='about' className='km-about-container container padding-section'>
             <SectionHeader title="About Me" />
@@ -82,11 +61,13 @@ export default function About() {
                 <div className="col-6-about  ">
 
                     <div className="row-icon">
-                        {iconServices.map((e) => {
+                        {skills?.map((skill) => {
                             return (
                                 <div className="col-4-icon">
-                                    <IconServices icon={e.icon} serve={e.serve} />
-                                </div>
+                                <div className="icon-serve">
+      <img  src={`http://127.0.0.1:8000${skill.image}`} width="60%"/>
+  </div>
+  <span className='label-serv'>{skill.name}</span>                                </div>
                             )
                         })}
 

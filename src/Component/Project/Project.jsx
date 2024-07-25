@@ -18,7 +18,7 @@ import { getTypes } from "./getTypes.js";
 
 
 const Project = () => {
-  
+
 
   const [projects, setProjects] = useState([]);
   const [types, setTypes] = useState([]);
@@ -34,7 +34,7 @@ const Project = () => {
       setTypes(data);
     });
 
-    
+
   }, []);
 
 
@@ -46,17 +46,17 @@ const Project = () => {
         getProjects().then(res => {
           setProjects(res);
         })
-      
+
     }
    else{
       getProjects().then(res => {
         const filtered=res.filter(item=> item.type.name === word);
         setProjects(filtered)
-    
+
       })}
     }
 
-      
+
 
   return (
     <div id="project">
@@ -65,13 +65,13 @@ const Project = () => {
          <button className="filterbutton" value='All' onClick={handleFilter}>
            All
           </button>
-        {types.map((type)=>{
+        {types?.map((type)=>{
           return (
           <button className="filterbutton" id={type.id} value={type.name} onClick={handleFilter}>
             {type.name}
           </button>)
         })}
-        
+
        </div>
       <div className="projectswiper">
         <Swiper
@@ -107,7 +107,7 @@ const Project = () => {
 
           ))}
 
-      
+
 
         </Swiper>
       </div>

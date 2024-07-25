@@ -29,11 +29,11 @@ export default function Skills() {
                 setSkills(data);
                 });
             }, []);
-         
+
              const handleAdd=()=>{
-               
+
                 setButtonClicked(true)
-                 
+
              }
 
           
@@ -44,22 +44,22 @@ export default function Skills() {
   
 
             const handleDelete = async (event,skill) => {
-     
-    
+
+
                     await axios.delete(`http://127.0.0.1:8000/api/delete-skill/${skill.id}`,{
                       headers: {
                         Authorization: `Bearer ${window.localStorage.getItem('token')}`
                       }
                     }).then(res => {
-                     
+
                          if(res.status===200){
                             getData().then((data) => {
                                 setSkills(data);
                                 });
                           alert('deleted')
                          }
-                           
-                  })  
+
+                  })
                  }
 
 
@@ -73,11 +73,11 @@ export default function Skills() {
                    headerName: "Delete ",
                    sortable: false,
                    renderCell: (params) =>
-    
+
                      <Button  color='error' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
                        Delete
                      </Button>
-                    
+
                  },
                 {
                    field: "Edit",
@@ -88,9 +88,9 @@ export default function Skills() {
                      <Button  color='success' variant='contained' onClick={(e)=>handleEdit(params.row.id)}>
                        Edit
                      </Button>
-                    
+
                  },
-                 
+
                 ];
             });
   return (
@@ -111,7 +111,7 @@ export default function Skills() {
             sx={{ fontWeight:'800',textAlign: "center", alignItems: "center" }}
         >
             Add new Skill
-        </Button> 
+        </Button>
         <Typography
             variant="h2"
             component="h2"
@@ -123,14 +123,14 @@ export default function Skills() {
         sx={{textAlign: "center"  }}
             columns={columns}
             rows={Skills}
-            
+
         ></DataGrid>
 
 
 
         </>
 
-   
+
 )}
 
 {editbuttonclicked && <EditForm/>}
