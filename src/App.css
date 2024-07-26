@@ -6,8 +6,9 @@
 
 :root {
   --font-color: #252523;
-  --button-color: #c0392b;
-  --second-button-color: #494947;
+  --button-color: #160e06;
+  --second-button-color: rgb(235, 170, 49);
+  /* --second-button-color: #494947; */
 
 }
 
@@ -38,6 +39,10 @@ li {
   list-style-type: none;
 }
 
+@keyframes typing {
+  from { width: 0 }
+  to { width: 70% }
+}
 
 
 @keyframes dropTop {

@@ -26,9 +26,8 @@
 
 }
 
-.la-home .header .logo h2 {
-    font-size: 1.5rem;
-    color: rgb(235, 170, 49);
+.la-home .header .logo  img {
+    width: 45px;
 }
 
 .la-home .navbar {
@@ -67,7 +66,7 @@
 }
 
 .la-home .navbar .active {
-    border-bottom: 2px solid var(--font-color);
+    border-bottom: 2px solid var(--second-button-color);
 }
 
 .la-home .header .burger-menu {
@@ -121,25 +120,29 @@
 
 
 .la-home .text-hero {
+    width: 40%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 9;
+   
 }
 
 .la-home .text-hero h2 {
     font-size: 4.3rem;
     margin-bottom: 12px;
-
+ 
 }
 
 .la-home .text-hero p {
+  
+    letter-spacing: 0.15rem;
     margin-bottom: 40px;
     color: #7c7b7b;
-    width: 70%;
-    font-weight: 700;
-    font-size: 1.4rem;
-
+    font-weight: 400;
+    font-size:1.5rem;
+ 
+  
 }
 
 .la-home .text-hero h1 {

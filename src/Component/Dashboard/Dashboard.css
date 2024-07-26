@@ -52,9 +52,22 @@
     padding-top: 30px;
 }
 
+.dashboard .content .profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
 .dashboard .content .profile img {
     border-radius: 50%;
-    width: 150px;
+    width: 120px;
+}
+.dashboard .content .profile h2 {
+  text-decoration: underline;
+  color: #fff;
+  font-size: 1rem;
+  
 }
 
 .dashboard .side-bar-right {
@@ -74,7 +87,7 @@
 }
 
 .dashboard .sections .link {
-    color: var(--button-color);
+    color: var(--second-button-color);
     font-weight: bold;
     font-size: 18px;
     border-radius: 10px;

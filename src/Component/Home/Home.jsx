@@ -3,6 +3,7 @@ import './Home.css'
 import resume from '../../assets/Resume.pdf';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../images/focal x.svg'
 export default function Home() {
     const [currentSection, setCurrentSection] = useState('home');
 
@@ -21,7 +22,7 @@ export default function Home() {
                 <div className="container">
                     <div className="main-header">
                         <div className="logo">
-                            <h2>Focal X</h2>
+                        <img src={logo}/>
                         </div>
                         <div className="navbar">
                             <li className={currentSection === 'home' ? 'active' : ''} onClick={() => handleSectionChange('home')}> <a href="#home">Home</a></li>

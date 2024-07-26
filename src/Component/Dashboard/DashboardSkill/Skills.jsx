@@ -30,12 +30,7 @@ export default function Skills() {
                 });
             }, []);
 
-             const handleAdd=()=>{
-
-                setButtonClicked(true)
-
-             }
-
+            const handleAdd=()=>{setButtonClicked(true) }
           
              const handleEdit=(id)=>{
               console.log(id)

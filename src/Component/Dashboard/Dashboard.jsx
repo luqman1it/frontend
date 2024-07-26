@@ -29,6 +29,7 @@ export default function Dashboard() {
                     <div className="content">
                         <div className="profile" >
                             <img src={userIcon} alt="" />
+                            <h2>user name</h2>
                         </div>
                         <div className="sections">
                             <NavLink className='link' to='/dashboard/box'><i className="fa-solid fa-house"></i> Dashboard</NavLink>

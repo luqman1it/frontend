@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./AddType.css"
+import '../EditForm/EditType.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
@@ -27,20 +27,21 @@ function EditType() {
         navigate('/dashboard/types')
     })
    }
+
   return (
-    <div>
-
-<div className='container-table-form'>
-
-<form onSubmit={()=>sendData(event)} className='form-skill'>
-<label htmlFor="" className='form-label'>type</label>
-<input type="text"  placeholder='enter your skill' onChange={(event)=>setName(event.target.value)} defaultValue={data.name} />
-<button variant="primary" type="submit" className='Add-btn'>
-  Edit type
-</button>
-</form>
-</div>
-    </div>
+      <div className='edit-type-form'>
+        <form onSubmit={()=>sendData(event)}>
+          <div className='type-name-section'>
+            <label htmlFor="" className='form-label'>Edit Project type Name</label>
+            <input type="text"  placeholder='enter your skill' onChange={(event)=>setName(event.target.value)} defaultValue={data.name} />
+          </div>
+        
+          <button type="submit">
+            Edit type
+          </button>
+        </form>
+      </div>
+    
   )
 }
 

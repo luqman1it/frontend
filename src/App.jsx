@@ -6,13 +6,10 @@ import LandingBage from './Component/LandingBage'
 import DashboardProject from './Component/Dashboard/DashboardProject/DashboardProject'
 import DashboardMessage from './Component/Dashboard/DashboardMessage/DashboardMessage'
 import DashboardBox from './Component/Dashboard/DashboardBox/DashboardBox'
-
-import ShowType from './Component/Dashboard/DashboardType/ShowType'
-import EditType from './Component/Dashboard/DashboardType/EditType'
-import AddType from './Component/Dashboard/DashboardType/AddType'
 import Types from './Component/Dashboard/DashboardType/Types'
 import Skills from './Component/Dashboard/DashboardSkill/Skills'
 import EditForm from './Component/Dashboard/DashboardSkill/EditForm/EditForm'
+import EditType from './Component/Dashboard/DashboardType/EditForm/EditType'
 
 function App() {
 
@@ -27,9 +24,7 @@ function App() {
           <Route path="box" element={<DashboardBox />} />
           <Route path="project" element={<DashboardProject />} />
           <Route path="message" element={<DashboardMessage />} />
-          <Route path="types" element={<Types/>} />
-          <Route path="AddType" element={<AddType/>} />
-          <Route path="showType/:id" element={<ShowType/>} />
+          <Route path="types" element={<Types/>} />       
           <Route path="editType/:id" element={<EditType/>} />
           <Route path="skills" element={<Skills/>} />
            <Route path="EditForm/:id" element={<EditForm/>} />
