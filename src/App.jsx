@@ -28,6 +28,7 @@ function App() {
           <Route path="editType/:id" element={<EditType/>} />
           <Route path="skills" element={<Skills/>} />
            <Route path="EditForm/:id" element={<EditForm/>} />
+
           {/* <Route path="ShowSkill" element={<Skills/>} /> */}
 
         </Route>
