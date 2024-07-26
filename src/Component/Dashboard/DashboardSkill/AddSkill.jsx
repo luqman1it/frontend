@@ -42,6 +42,7 @@ let Data={
    <input type="text" name="name" onChange={(event)=>setName(event.target.value)}/>
    <label htmlFor="">image</label>
    <input type="file" name="image"  onChange={(event)=>setImage(event.target.files[0])}/>
+   
    <input type="submit"  value="Add skill" />
    </form>
 </div>  )

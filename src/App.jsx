@@ -13,7 +13,7 @@ import AddType from './Component/Dashboard/DashboardType/AddType'
 import Types from './Component/Dashboard/DashboardType/Types'
 import Skills from './Component/Dashboard/DashboardSkill/Skills'
 import AddSkill from './Component/Dashboard/DashboardSkill/AddSkill'
-import EditSkill from './Component/Dashboard/DashboardSkill/EditSkill'
+import EditForm from './Component/Dashboard/DashboardSkill/EditForm/EditForm'
 
 function App() {
 
@@ -34,7 +34,7 @@ function App() {
           <Route path="editType/:id" element={<EditType/>} />
           <Route path="skills" element={<Skills/>} />
           <Route path="Addskill" element={<AddSkill/>} />
-           <Route path="EditSkill/:id" element={<EditSkill/>} />
+           <Route path="EditSkill/:id" element={<EditForm/>} />
           {/* <Route path="ShowSkill" element={<Skills/>} /> */}
 
         </Route>
