@@ -18,7 +18,7 @@ const ShowForm = () => {
     const [projecttypes,setProjectTypes]=useState([])
     const [projectFile,setProjectFile]=useState(null)
     const [skills, setSkills] = useState([]);
-    const [selectSkills, setSelectSkills] = useState([]);
+    const [selectSkill, setSelectSkill] = useState([]);
 
 
     const [projectskills,setProjectskills]=useState([])
@@ -62,7 +62,19 @@ const ShowForm = () => {
       axios.get('http://127.0.0.1:8000/api/get-skills').then(res=>setSkills(res.data.skills));
 
     },[])
+    const handleChecked=(e)=>{
+     setIsChecked(!isChecked)
+     var array = []
+     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+     
+     for (var i = 0; i < checkboxes.length; i++) {
+       array.push(checkboxes[i].id)
+     }
+     setSelectSkill(array)
+   
+    }
 
+    
     const handleCloseForm = () =>{
       setCloseForm(true)
       console.log('closed')
@@ -86,13 +98,11 @@ const ShowForm = () => {
        formData.append('link', projectnLink);
        formData.append('type_id', projecttype);
        formData.append('img_url', projectFile);
-       if(selectSkills.length > 0){
-        for (let i = 0; i < selectSkills.length; i++) {
-            formData.append('skill_id[]', selectSkills[i].id);
-            console.log(selectSkills[i])
-
-        }
-       }
+       {array.map((item)=>{
+        formData.append('skill_id',item)
+       })}
+     
+       
 
        await axios.post('http://127.0.0.1:8000/api/addprojects',
           formData
@@ -149,7 +159,7 @@ console.log(res.data);
             </select>
 
      <label htmlFor="skillId">Skills:</label>
-        <select
+        {/* <select
           multiple
           name='skill_id[]'
              value={skills.id}
@@ -162,7 +172,7 @@ console.log(res.data);
 
         )
       })}
-      </select>
+      </select> */}
 
       {/* <label for="skillId">Skills:</label>
       <select multiple name='skill_id[]' onChange={(e)=>{setSkills(e.target.value)}}>
@@ -183,8 +193,13 @@ console.log(res.data);
               
               {projectskills.map((skill)=>{
                 return (
-
-                  <CheckBox label={skill.name} checked={true}/>
+                 <div className="ra-checkbox-wrapper">
+                  <label>
+                    <input type="checkbox"  checked={isChecked} id={skill.id} onChange={handleChecked}
+                  />
+                    <p>{skill.name}</p>  
+                  </label>
+                </div>
                 
                 )
               })}
