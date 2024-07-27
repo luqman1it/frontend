@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
-import DashboardProject from '../DashboardProject';
-import CheckBox from './CheckBox';
+import DashboardProject from '../DashboardProject'
+
 
 const ShowForm = () => {
 
@@ -71,9 +71,9 @@ const ShowForm = () => {
        array.push(checkboxes[i].id)
      }
      setSelectSkill(array)
-   
+     console.log(selectSkill)
     }
-
+ 
     
     const handleCloseForm = () =>{
       setCloseForm(true)
@@ -98,7 +98,7 @@ const ShowForm = () => {
        formData.append('link', projectnLink);
        formData.append('type_id', projecttype);
        formData.append('img_url', projectFile);
-       {array.map((item)=>{
+       {selectSkill.map((item)=>{
         formData.append('skill_id',item)
        })}
      
@@ -158,35 +158,7 @@ console.log(res.data);
 
             </select>
 
-     <label htmlFor="skillId">Skills:</label>
-        {/* <select
-          multiple
-          name='skill_id[]'
-             value={skills.id}
 
-        >
-
-      {skills?.map((skill)=>{
-        return(
-          <option value={skill.id} onChange={(e)=>{setSelectSkills(skill.id)}}>{skill.name }</option>
-
-        )
-      })}
-      </select> */}
-
-      {/* <label for="skillId">Skills:</label>
-      <select multiple name='skill_id[]' onChange={(e)=>{setSkills(e.target.value)}}>
-
-      {skills?.map((skill)=>{
-        return(
-          <option value={skill.id} >{skill.name }</option>
-
-        )
-      })}
-    </select> */}
-
-
-            {/* <input type="number" placeholder="Project type" name="type_id" value={projecttype} onChange={(e) =>setProjectType( e.target.value)} /> */}
             <input type="file" id="input-file" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
             <div className='ra-skills-checkbox'>
               <h2>Skills</h2>
@@ -195,7 +167,7 @@ console.log(res.data);
                 return (
                  <div className="ra-checkbox-wrapper">
                   <label>
-                    <input type="checkbox"  checked={isChecked} id={skill.id} onChange={handleChecked}
+                    <input type="checkbox"  id={skill.id} onChange={handleChecked}
                   />
                     <p>{skill.name}</p>  
                   </label>
