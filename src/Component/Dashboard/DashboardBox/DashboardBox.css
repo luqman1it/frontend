@@ -17,11 +17,11 @@
     border-radius: 12px;
 }
 
-.dash-box .box:first-child {
+.dash-box .box{
     background-color: #ff6347;
 }
 
-.dash-box .box:nth-child(2) {
+/* .dash-box .box:nth-child(2) {
     background-color: rgba(255, 99, 71, 0.5);
     color: #fff;
 }
@@ -29,7 +29,7 @@
 .dash-box .box:nth-child(2) h1 {
     border-bottom: 2px solid white;
 
-}
+} */
 
 .dash-box .box h1 {
     border-bottom: 2px solid black;
