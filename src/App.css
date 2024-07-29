@@ -39,10 +39,6 @@ li {
   list-style-type: none;
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 70% }
-}
 
 
 @keyframes dropTop {
@@ -57,7 +53,17 @@ li {
   
 }
 
-
+@keyframes mymove {
+  0%{
+   width: 0;
+   
+   
+    
+  }
+  100%{
+    width: 40%;
+  }
+}
 @keyframes roll {
   0% {
     font-size:0px;

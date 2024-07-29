@@ -127,6 +127,9 @@ export default function Types() {
         sx={{textAlign: "center"  }}
             columns={columns}
             rows={types}
+            pagination
+            autoPageSize
+             rowsLoadingMode="server"
 
         ></DataGrid>
 

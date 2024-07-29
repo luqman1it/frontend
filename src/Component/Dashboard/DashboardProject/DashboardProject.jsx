@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import './DashboardProject.css'
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Pagination, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import ShowForm from './ShowForm/ShowForm';
 import { getData } from './getData';
@@ -55,7 +55,7 @@ const DashboardProject = () => {
      { field: "img_url", headerName: "Image Url", width: 130 },
      { field: "link", headerName: "Link", width: 130 },
      { field: "type_id", headerName: "Type ID", width: 130 },
-     { field: "skills", headerName: "Skills", width: 130 },
+
      {
         field: "action",
         headerName: "Action",
@@ -76,8 +76,10 @@ const DashboardProject = () => {
 
   <Box
         sx={{
-            height: 400,
+          
+            height: "560px",
             width: "100%",
+            
         }}
         >
       {buttonclicked ? <ShowForm/>
@@ -101,13 +103,15 @@ const DashboardProject = () => {
         sx={{textAlign: "center"  }}
             columns={columns}
             rows={projects}
-
+            pagination
+           autoPageSize
+            rowsLoadingMode="server"
+            
         ></DataGrid>
+        
 
         </>
-
-
-)}
+      )}
 
 </Box>
 

@@ -91,6 +91,7 @@ const Project = () => {
           className="mySwiper"
         >
 
+
           {projects?.map((project) => (
 
 
@@ -106,6 +107,7 @@ const Project = () => {
             </div>
 
           ))}
+
 
 
 

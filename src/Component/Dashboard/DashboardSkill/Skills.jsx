@@ -118,6 +118,9 @@ export default function Skills() {
         sx={{textAlign: "center"  }}
             columns={columns}
             rows={Skills}
+            pagination
+            autoPageSize
+             rowsLoadingMode="server"
 
         ></DataGrid>
 
