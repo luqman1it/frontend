@@ -1,0 +1,18 @@
+.ra-show-message-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    position: absolute;
+    width:40%;
+    margin: 0 auto;
+    text-align: center;
+    transform: translate(190px,150px);
+    border: 2px solid var(--button-color);
+    border-radius: 20px;
+    background-color: #e1efff;
+    box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    height: 200px;
+    animation: mymove .3s ease-out;
+    
+}

@@ -1,17 +1,29 @@
+.dashboard{
+    display: flex;
+    flex-direction: column;
+  
+    width: 100%;
+}
+
+
+
 .dash-header {
     background-color: var(--button-color);
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 12px 50px;
 }
 
-.dash-header h2 {
-    color: #252523;
+.dash-header img {
+   width: 45px;
 }
 
 .dashboard .dash-app {
     display: flex;
+    flex-direction: row;
+    width: 100%;
 
 }
 
@@ -30,7 +42,7 @@
 }
 
 .dashboard .side-bar {
-    width: 250px;
+    width: 25%;
     background-color: #252523;
     height: 100vh;
     display: flex;
@@ -40,13 +52,27 @@
     padding-top: 30px;
 }
 
+.dashboard .content .profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
 .dashboard .content .profile img {
     border-radius: 50%;
-    width: 150px;
+    width: 120px;
+}
+.dashboard .content .profile h2 {
+  text-decoration: underline;
+  color: #fff;
+  font-size: 1rem;
+  
 }
 
 .dashboard .side-bar-right {
     padding: 30px;
+    width: 75%;
  
 }
 
@@ -61,7 +87,7 @@
 }
 
 .dashboard .sections .link {
-    color: var(--button-color);
+    color: var(--second-button-color);
     font-weight: bold;
     font-size: 18px;
     border-radius: 10px;

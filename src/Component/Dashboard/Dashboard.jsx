@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './Dashboard.css'
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import logo from '../../images/focal x.svg'
 import userIcon from '../../images/abc.jpg'
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -17,8 +18,8 @@ export default function Dashboard() {
     };
     return (
         <div className='dashboard'>
-            <div className="dash-header">
-                <h2>Focal X</h2>
+             <div className="dash-header">
+               <img src={logo}/>
                 <div >
                     <li onClick={handleLogOut} className='log-out' >LogOut</li>
                 </div>
@@ -28,13 +29,15 @@ export default function Dashboard() {
                     <div className="content">
                         <div className="profile" >
                             <img src={userIcon} alt="" />
+                            <h2>user name</h2>
                         </div>
                         <div className="sections">
                             <NavLink className='link' to='/dashboard/box'><i className="fa-solid fa-house"></i> Dashboard</NavLink>
                             <NavLink className='link' to='/dashboard/project'><i className="fa-solid fa-list-check"></i> Project</NavLink>
-                            <NavLink className='link' to='/dashboard/message'><i className="fa-solid fa-message"></i> Message</NavLink>
-                            <NavLink className='link'  to='/dashboard/skills'><i className="fa-solid fa-building"></i> Skills</NavLink>
-                       
+                            <NavLink className='link' to='/dashboard/message'><i className="fa-solid fa-message"></i> Contact Message</NavLink>
+                            <NavLink className='link'  to='/dashboard/types'><i className="fa-solid fa-building"></i> Project types</NavLink>
+                            <NavLink className='link'  to='/dashboard/skills'><i className="fa-solid fa-building"></i> skills</NavLink>
+
                         </div>
                     </div>
                 </div>

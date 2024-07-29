@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import "./AddSkills.css"
+import '../EditForm/EditType.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-function EditSkill() {
+function EditType() {
     const [data,setData]=useState({})
     const[name,setName]=useState("")
     const navigate=useNavigate()
@@ -24,24 +24,25 @@ function EditSkill() {
             Authorization: `Bearer ${window.localStorage.getItem('token')}`
         }
     }).then(res=>{console.log(res);
-        navigate('/dashboard/skills')
+        navigate('/dashboard/types')
     })
    }
+
   return (
-    <div>
-
-<div className='container-table-form'>
-
-<form onSubmit={()=>sendData(event)} className='form-skill'>
-<label htmlFor="" className='form-label'>skill</label>
-<input type="text"  placeholder='enter your skill' onChange={(event)=>setName(event.target.value)} defaultValue={data.name} />
-<button variant="primary" type="submit" className='Add-btn'>
-  Edit skill 
-</button> 
-</form>
-</div>
-    </div>
+      <div className='edit-type-form'>
+        <form onSubmit={()=>sendData(event)}>
+          <div className='type-name-section'>
+            <label htmlFor="" className='form-label'>Edit Project type Name</label>
+            <input type="text"  placeholder='enter your skill' onChange={(event)=>setName(event.target.value)} defaultValue={data.name} />
+          </div>
+        
+          <button type="submit">
+            Edit type
+          </button>
+        </form>
+      </div>
+    
   )
 }
 
-export default EditSkill
+export default EditType

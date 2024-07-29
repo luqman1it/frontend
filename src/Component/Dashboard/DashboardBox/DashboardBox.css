@@ -14,28 +14,24 @@
     padding: 20px;
     height: 150px;
     width: 150px;
-    border-radius: 12px;
+    border-radius: 25px;
+    background-color:var(--button-color);
+    animation: dropTop .8s linear;
+   box-shadow: 2px 3px 2px 3px rgba(205, 193, 28, 0.4);
 }
 
-.dash-box .box:first-child {
-    background-color: #ff6347;
-}
 
-.dash-box .box:nth-child(2) {
-    background-color: rgba(255, 99, 71, 0.5);
-    color: #fff;
-}
 
-.dash-box .box:nth-child(2) h1 {
-    border-bottom: 2px solid white;
-
-}
 
 .dash-box .box h1 {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--second-button-color);
+    color: white;
+    font-size: 2rem;
+    font-weight: 200;
 }
 
 .dash-box .box span {
     font-size: 22px;
     font-weight: bold;
+    color: white;
 }

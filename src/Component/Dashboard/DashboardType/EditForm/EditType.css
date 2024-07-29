@@ -1,0 +1,60 @@
+.edit-type-form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+
+}
+
+.edit-type-form form{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid transparent;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow:  0px 2px 2px 3px var(--button-color);
+  animation: dropTop .3s linear;
+
+}
+.edit-type-form .type-name-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+}
+.edit-type-form .type-name-section label{
+    font-size: 1rem;
+}
+
+.edit-type-form .type-name-section input{
+    width: 34%;
+border:2px solid var(--button-color);
+border-radius: 5px;
+padding: 10px;
+color: var(--font-color);
+}
+
+
+.edit-type-form  button{
+    border: none;
+    background-color: var(--button-color);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+}
+
+.edit-type-form  button:hover{
+    background-color: white;
+    color: var(--button-color);
+    cursor: pointer;
+}

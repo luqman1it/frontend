@@ -6,10 +6,10 @@ import LandingBage from './Component/LandingBage'
 import DashboardProject from './Component/Dashboard/DashboardProject/DashboardProject'
 import DashboardMessage from './Component/Dashboard/DashboardMessage/DashboardMessage'
 import DashboardBox from './Component/Dashboard/DashboardBox/DashboardBox'
-import Skills from './Component/Dashboard/DashboradSkills/Skills'
-import AddSkills from './Component/Dashboard/DashboradSkills/AddSkills'
-import ShowSkill from './Component/Dashboard/DashboradSkills/ShowSkill'
-import EditSkill from './Component/Dashboard/DashboradSkills/EditSkill'
+import Types from './Component/Dashboard/DashboardType/Types'
+import Skills from './Component/Dashboard/DashboardSkill/Skills'
+import EditForm from './Component/Dashboard/DashboardSkill/EditForm/EditForm'
+import EditType from './Component/Dashboard/DashboardType/EditForm/EditType'
 
 function App() {
 
@@ -24,10 +24,12 @@ function App() {
           <Route path="box" element={<DashboardBox />} />
           <Route path="project" element={<DashboardProject />} />
           <Route path="message" element={<DashboardMessage />} />
+          <Route path="types" element={<Types/>} />       
+          <Route path="editType/:id" element={<EditType/>} />
           <Route path="skills" element={<Skills/>} />
-          <Route path="Addskills" element={<AddSkills/>} />
-          <Route path="showSkill/:id" element={<ShowSkill/>} />
-          <Route path="editSkill/:id" element={<EditSkill/>} />
+           <Route path="EditForm/:id" element={<EditForm/>} />
+
+          {/* <Route path="ShowSkill" element={<Skills/>} /> */}
 
         </Route>
         <Route path="/login" element={<Login />} />

@@ -3,6 +3,7 @@ import './Home.css'
 import resume from '../../assets/Resume.pdf';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../images/focal x.svg'
 export default function Home() {
     const [currentSection, setCurrentSection] = useState('home');
 
@@ -21,7 +22,7 @@ export default function Home() {
                 <div className="container">
                     <div className="main-header">
                         <div className="logo">
-                            <h2>Focal X</h2>
+                        <img src={logo}/>
                         </div>
                         <div className="navbar">
                             <li className={currentSection === 'home' ? 'active' : ''} onClick={() => handleSectionChange('home')}> <a href="#home">Home</a></li>
@@ -51,7 +52,10 @@ export default function Home() {
                 <div className="text-hero">
                     <h2>Hello !</h2>
                     <p>We are a team of full stack developers ready to bring your projects to life</p>
-                    <h1><span>Our Name is</span><br />X6 full stack</h1>
+                    <h1><span>Our Name is</span><br />
+                    <span className='hero-span2'>
+                    X6 full stack
+                        </span></h1>
                     <div className="button-group">
                         <a className="btn" href="#contact">Contact Me</a>
                         <a className="btn" href="#project">My Projects</a>
