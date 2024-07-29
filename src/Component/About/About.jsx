@@ -1,4 +1,4 @@
-import { FaCss3, FaFileCode, FaHtml5, FaLaptop, FaPaintBrush } from 'react-icons/fa';
+// import { FaCss3, FaFileCode, FaHtml5, FaLaptop, FaPaintBrush } from 'react-icons/fa';
 import SectionHeader from '../SectionHeader/SectionHeader'
 import "./About.css";
 import IconServices from './IconServices/IconServices';
@@ -53,7 +53,7 @@ export default function About() {
                             <strong>
                                 Email
                             </strong>
-                            <span>    focal@Fullstack.com</span>
+                            <span>  focal@Fullstack.com</span>
                         </li>
                     </ul>
                 </div>
@@ -65,7 +65,7 @@ export default function About() {
                             return (
                                 <div className="col-4-icon">
                                 <div className="icon-serve">
-      <img  src={`http://127.0.0.1:8000${skill.image}`} width="60%"/>
+      <img  src={`http://localhost:8000/storage/${skill.image}`} width="60%"/>
   </div>
   <span className='label-serv'>{skill.name}</span>                                </div>
                             )
