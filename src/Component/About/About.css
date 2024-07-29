@@ -61,10 +61,14 @@ gap: 30px;
 
 }
 .container.km-about-container .km-container-row-About .col-6-about .row-icon .col-4-icon .icon-serve{
-    border: 1px solid #c0392b;
+    box-sizing: border-box;
+    border-radius: 50%;
+    padding: 5px;
+    border: 1px solid transparent;
     text-align: center;
-width:120px;
-height:120px;
+    width:120px;
+    height:120px;
+    background-color: rgb(238, 236, 236);
 
     margin: auto;
     margin-bottom: 15px;

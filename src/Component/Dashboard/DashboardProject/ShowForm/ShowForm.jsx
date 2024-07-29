@@ -69,9 +69,10 @@ const ShowForm = () => {
      
      for (var i = 0; i < checkboxes.length; i++) {
        array.push(checkboxes[i].id)
+       
      }
      setSelectSkill(array)
-     console.log(selectSkill)
+     
     }
  
     
