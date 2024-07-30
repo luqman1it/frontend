@@ -78,7 +78,7 @@ const EditForm = () => {
              </div>
         
             <div className='skill-show-img'>
-                 <img src={`http://127.0.0.1:8000${item.image}`} alt="" width='100px' height='100px'/>
+                 <img src={`http://localhost:8000/storage/${item.image}`} alt="" width='100px' height='100px'/>
              </div>
 
         </div> 
