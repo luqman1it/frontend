@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
 import DashboardProject from '../DashboardProject'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ShowForm = () => {
 
 
     const [closeForm,setCloseForm]=useState(false)
-    const [isLoading, setIsLoading] = useState(false);   
-    const [isChecked, setIsChecked] = useState(false);   
+    const [isLoading, setIsLoading] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
     const [projectname,setProjectName]=useState('')
     const [projectdesc,setProjectDesc]=useState('')
@@ -22,7 +23,6 @@ const ShowForm = () => {
 
 
     const [projectskills,setProjectskills]=useState([])
-
     const getTypes = async () => {
       return await axios
         .get("http://127.0.0.1:8000/api/alltypes")
@@ -40,8 +40,8 @@ const ShowForm = () => {
       return await axios
         .get("http://127.0.0.1:8000/api/get-skills")
         .then((res) => {
-    
-    
+
+
           return res.data.skills;
         })
         .catch((error) => {
@@ -62,20 +62,28 @@ const ShowForm = () => {
       axios.get('http://127.0.0.1:8000/api/get-skills').then(res=>setSkills(res.data.skills));
 
     },[])
-    const handleChecked=(e)=>{
-     setIsChecked(!isChecked)
-     var array = []
-     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-     
-     for (var i = 0; i < checkboxes.length; i++) {
-       array.push(checkboxes[i].id)
-       
-     }
-     setSelectSkill(array)
-     
+    // const handleChecked=(e)=>{
+    //  setIsChecked(!isChecked)
+    //  var array = []
+    //  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+    //  for (var i = 0; i < checkboxes.length; i++) {
+    //    array.push(checkboxes[i].id)
+
+    //  }
+    //  setSelectSkill(array)
+
+    // }
+
+    const handleChecked = (e) => {
+        const { id, checked } = e.target;
+        if (checked) {
+            setSelectSkill([...selectSkill, parseInt(id)]);
+        } else {
+            setSelectSkill(selectSkill.filter((skill) => skill !== parseInt(id)));
+        }
     }
- 
-    
+
     const handleCloseForm = () =>{
       setCloseForm(true)
       console.log('closed')
@@ -99,11 +107,11 @@ const ShowForm = () => {
        formData.append('link', projectnLink);
        formData.append('type_id', projecttype);
        formData.append('img_url', projectFile);
-       {selectSkill.map((item)=>{
-        formData.append('skill_id',item)
-       })}
-     
-       
+       {selectSkill.map((skillId)=>{
+        formData.append('skill_id[]', skillId);
+    })}
+
+
 
        await axios.post('http://127.0.0.1:8000/api/addprojects',
           formData
@@ -116,8 +124,7 @@ const ShowForm = () => {
 console.log(res.data);
         if (res.status === 200) {
 
-          alert('project added successfully');
-          setProjectName('')
+                        setProjectName('')
           setProjectDesc('')
           setProjectLink('')
           setProjectType('')
@@ -126,6 +133,7 @@ console.log(res.data);
 
 
             setIsLoading(false)
+            toast("This is a toast notification !");
 
         }
 
@@ -166,26 +174,26 @@ console.log(res.data);
             <input type="file" id="input-file" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
             <div className='ra-skills-checkbox'>
               <h2>Skills</h2>
-              
+
               {projectskills.map((skill)=>{
                 return (
                  <div className="ra-checkbox-wrapper">
                   <label>
-                    <input type="checkbox"  id={skill.id} onChange={handleChecked}
+                    <input type="checkbox" name="skii_id[]" id={skill.id} onChange={handleChecked} value={skill.name}
                   />
-                    <p>{skill.name}</p>  
+                    <p>{skill.name}</p>
                   </label>
                 </div>
-                
+
                 )
               })}
-          
+
             </div>
-            <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
-    
-           
-         
-        </form> 
+            <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit' } </button>
+
+
+
+        </form>
 
       </div> </>:  (  <DashboardProject/>)}
 
