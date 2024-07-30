@@ -14,7 +14,7 @@ const ShowForm = () => {
     const [projectname,setProjectName]=useState('')
     const [projectdesc,setProjectDesc]=useState('')
     const [projectnLink,setProjectLink]=useState('')
-    const [projecttype,setProjectType]=useState([1])
+    const [projecttype,setProjectType]=useState(null)
     const [projecttypes,setProjectTypes]=useState([])
     const [projectFile,setProjectFile]=useState(null)
     const [skills, setSkills] = useState([]);
@@ -152,11 +152,13 @@ console.log(res.data);
             <input type="text" placeholder="Project Name" name="name" value={projectname} onChange={(e) =>setProjectName( e.target.value)}/>
             <input type="text" placeholder="Project description" name="description"value={projectdesc} onChange={(e) =>setProjectDesc( e.target.value)}/>
             <input type="text" placeholder="Project link" name="link" value={projectnLink} onChange={(e) =>setProjectLink( e.target.value)} />
-            <select name='types' onChange={(e) => setProjectType(e.target.value)}>
+            <select name='types'  onChange={(e) => 
+        setProjectType(e.target.value)
+        }>
   {projecttypes.map((type) => {
-    // console.log(type.id);
     return (
-      <option key={type.id} value={type.id}>
+      <option key={type.id} value={type.id} 
+         >
         {type.name}
       </option>
     );
