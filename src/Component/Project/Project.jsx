@@ -39,24 +39,24 @@ const Project = () => {
 
 
   const handleFilter = (e) => {
-      let word=e.target.value
-      setCategory(word)
+    let word=e.target.value
+    setCategory(word)
 
-      if (word=='All'){
-        getProjects().then(res => {
-          setProjects(res);
-        })
-
-    }
-   else{
+    if (word=='All'){
       getProjects().then(res => {
-        const filtered=res.filter(item=> item.type.name === word);
-        setProjects(filtered)
+        setProjects(res);
+      })
 
-      })}
+  }
+ else{
+    getProjects().then(res => {
+         const filtered=res.filter(item=> item.type.name === word);
+        setProjects(filtered)}
+      )
+     
+
     }
-
-
+  }
 
   return (
     <div id="project">
