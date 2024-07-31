@@ -13,7 +13,7 @@ export default function About() {
     useEffect(()=>{
         axios.get('http://127.0.0.1:8000/api/get-skills').then(res=>setSkill(res.data.skills))
     },[])
-   
+
     return (
         <div id='about' className='km-about-container container padding-section'>
             <SectionHeader title="About Me" />

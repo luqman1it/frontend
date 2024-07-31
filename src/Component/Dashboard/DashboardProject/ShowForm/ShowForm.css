@@ -1,7 +1,7 @@
 .dashboard-project {
     position: fixed;
       left: 0;
-      top: 0; 
+      top: 0;
       width: 100%;
       height: 100%;
       display: flex;
@@ -15,7 +15,7 @@
     position: absolute;
     z-index: 1;
     width: 50%;
-    padding: 20px; 
+    padding: 20px;
     border: 1px solid transparent;
     background-color: white;
     border-radius: 20px;
@@ -79,12 +79,12 @@
 
 }
 
-    
+
 .ra-show-form .ra-form .ra-skills-checkbox{
     display: flex;
     flex-direction: row;
     gap: 20px;
-    
+
 }
 .ra-container {
     display: block;
@@ -98,7 +98,7 @@
     -ms-user-select: none;
     user-select: none;
   }
-  
+
   /* Hide the browser's default checkbox */
   .ra-container input {
     position: absolute;
@@ -134,7 +134,7 @@
 
 
   input:checked  {
-    background-color: #b25729;
+    background-color: black;
     position: relative;
   }
 
@@ -155,11 +155,11 @@
     border-color: #c0c0c0;
     background-color: #c0c0c0;
   }
-  
+
   .ra-checkbox-wrapper input[type="checkbox"]:disabled + span {
     color: #c0c0c0;
   }
-  
+
   .ra-checkbox-wrapper input[type="checkbox"]:focus {
     box-shadow: 0 0 20px #b5440c;
   }
