@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
 import DashboardProject from '../DashboardProject'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ShowForm = () => {
@@ -18,10 +20,19 @@ const ShowForm = () => {
     const [projecttypes,setProjectTypes]=useState([])
     const [projectFile,setProjectFile]=useState(null)
     const [skills, setSkills] = useState([]);
+    const [shownotify, setShowNotify] = useState(true);
+    
     const [selectSkill, setSelectSkill] = useState([]);
 
 
     const [projectskills,setProjectskills]=useState([])
+
+
+    const showToastMessage = () => {
+      toast.success("project added successfully !");
+    };
+  
+
 
     const getTypes = async () => {
       return await axios
@@ -116,7 +127,7 @@ const ShowForm = () => {
 console.log(res.data);
         if (res.status === 200) {
 
-          alert('project added successfully');
+          showToastMessage()
           setProjectName('')
           setProjectDesc('')
           setProjectLink('')
@@ -139,6 +150,7 @@ console.log(res.data);
     }
   return (
     <>
+   
      {!closeForm ?
 
      <>
@@ -183,8 +195,8 @@ console.log(res.data);
               })}
           
             </div>
-            <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
-    
+            <button disabled={isLoading} type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
+            <ToastContainer/>
            
          
         </form> 

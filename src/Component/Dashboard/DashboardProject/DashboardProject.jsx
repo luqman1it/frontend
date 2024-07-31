@@ -5,13 +5,18 @@ import { DataGrid } from "@mui/x-data-grid";
 import ShowForm from './ShowForm/ShowForm';
 import { getData } from './getData';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+import EditProjectForm from './EditForm/EditProjectForm';
 
 
 
 const DashboardProject = () => {
    const [buttonclicked,setButtonClicked]=useState(false);
    const [projects, setProjects] = useState([]);
+   const [editbuttonclicked,setEditButtonClicked]=useState(false); 
+   const navigate=useNavigate()
+
+
 
    useEffect(() => {
        getData().then((data) => {
@@ -46,6 +51,12 @@ const DashboardProject = () => {
     }
 
 
+    const handleEdit=(id)=>{
+      console.log(id)
+      navigate(`/dashboard/EditProjectForm/${id}`)
+     }
+
+
 
    const columns = useMemo(() => {
      return [
@@ -57,12 +68,21 @@ const DashboardProject = () => {
      { field: "type_id", headerName: "Type ID", width: 130 },
 
      {
-        field: "action",
-        headerName: "Action",
+        field: "Delete  ",
+        headerName: "Delete",
         sortable: false,
         renderCell: (params) =>
           <Button  color='error' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
             Delete
+          </Button>
+      },
+      {
+        field: "Edit",
+        headerName: "Edit",
+        sortable: false,
+        renderCell: (params) =>
+          <Button  color='success' variant='contained' onClick={(e)=>handleEdit(params.row.id)}>
+            Edit
           </Button>
       },
      ];
@@ -112,6 +132,8 @@ const DashboardProject = () => {
 
         </>
       )}
+
+{editbuttonclicked && <EditProjectForm/>}
 
 </Box>
 
