@@ -10,6 +10,7 @@ import Types from './Component/Dashboard/DashboardType/Types'
 import Skills from './Component/Dashboard/DashboardSkill/Skills'
 import EditForm from './Component/Dashboard/DashboardSkill/EditForm/EditForm'
 import EditType from './Component/Dashboard/DashboardType/EditForm/EditType'
+import EditProjectForm from './Component/Dashboard/DashboardProject/EditForm/EditProjectForm'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="editType/:id" element={<EditType/>} />
           <Route path="skills" element={<Skills/>} />
            <Route path="EditForm/:id" element={<EditForm/>} />
+           <Route path="EditProjectForm/:id" element={<EditProjectForm/>} />
 
           {/* <Route path="ShowSkill" element={<Skills/>} /> */}
 

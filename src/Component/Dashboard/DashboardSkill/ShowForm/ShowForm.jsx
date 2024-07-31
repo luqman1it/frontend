@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
 import DashboardSkill from '../../DashboardSkill/Skills';
-
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 const ShowForm = () => {
 
 
@@ -13,6 +14,9 @@ const ShowForm = () => {
     const [skillFile,setSkillFile]=useState(null)
 
 
+    const showToastMessage = () => {
+      toast.success("Skill added successfully !");
+    };
   
     const handleCloseForm = () =>{
       setCloseForm(true)
@@ -46,7 +50,7 @@ const ShowForm = () => {
        
         if (res.status === 200) {
           
-          alert('skill added successfully');
+          showToastMessage()
           setSkillName('')
           setSkillFile(null)
 
@@ -78,7 +82,7 @@ const ShowForm = () => {
             <input type="text" placeholder="Skill Name" name="name" value={skillname} onChange={(e) =>setSkillName( e.target.value)}/>
                      <input type="file" id="input-file" onChange={(e)=>  setSkillFile(e.target.files[0])}/>
             <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
-            
+            <ToastContainer/>
 
 
         </form> 

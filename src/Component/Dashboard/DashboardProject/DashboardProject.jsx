@@ -6,8 +6,7 @@ import ShowForm from './ShowForm/ShowForm';
 import { getData } from './getData';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import EditForm from '../DashboardProject/EditForm/EditForm';
-
+import EditProjectForm from './EditForm/EditProjectForm';
 
 
 
@@ -54,7 +53,7 @@ const DashboardProject = () => {
 
     const handleEdit=(id)=>{
       console.log(id)
-      navigate(`/dashboard/EditForm/${id}`)
+      navigate(`/dashboard/EditProjectForm/${id}`)
      }
 
 
@@ -69,8 +68,8 @@ const DashboardProject = () => {
      { field: "type_id", headerName: "Type ID", width: 130 },
 
      {
-        field: "action",
-        headerName: "Action",
+        field: "Delete  ",
+        headerName: "Delete",
         sortable: false,
         renderCell: (params) =>
           <Button  color='error' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
@@ -78,11 +77,11 @@ const DashboardProject = () => {
           </Button>
       },
       {
-        field: "action",
-        headerName: "Action",
+        field: "Edit",
+        headerName: "Edit",
         sortable: false,
         renderCell: (params) =>
-          <Button  color='error' variant='contained' onClick={(e)=>handleEdit(params.row.id)}>
+          <Button  color='success' variant='contained' onClick={(e)=>handleEdit(params.row.id)}>
             Edit
           </Button>
       },
@@ -134,7 +133,7 @@ const DashboardProject = () => {
         </>
       )}
 
-{editbuttonclicked && <EditForm/>}
+{editbuttonclicked && <EditProjectForm/>}
 
 </Box>
 
