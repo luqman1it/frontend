@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
 import DashboardProject from '../DashboardProject'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const ShowForm = () => {
 
@@ -15,14 +14,17 @@ const ShowForm = () => {
     const [projectname,setProjectName]=useState('')
     const [projectdesc,setProjectDesc]=useState('')
     const [projectnLink,setProjectLink]=useState('')
-    const [projecttype,setProjectType]=useState([1])
+    const [projecttype,setProjectType]=useState(null)
     const [projecttypes,setProjectTypes]=useState([])
     const [projectFile,setProjectFile]=useState(null)
     const [skills, setSkills] = useState([]);
+    const [shownotify, setShowNotify] = useState(true);
+    
     const [selectSkill, setSelectSkill] = useState([]);
 
 
     const [projectskills,setProjectskills]=useState([])
+
     const getTypes = async () => {
       return await axios
         .get("http://127.0.0.1:8000/api/alltypes")
@@ -124,7 +126,9 @@ const ShowForm = () => {
 console.log(res.data);
         if (res.status === 200) {
 
-                        setProjectName('')
+
+          showToastMessage()
+          setProjectName('')
           setProjectDesc('')
           setProjectLink('')
           setProjectType('')
@@ -147,6 +151,7 @@ console.log(res.data);
     }
   return (
     <>
+   
      {!closeForm ?
 
      <>
@@ -160,11 +165,13 @@ console.log(res.data);
             <input type="text" placeholder="Project Name" name="name" value={projectname} onChange={(e) =>setProjectName( e.target.value)}/>
             <input type="text" placeholder="Project description" name="description"value={projectdesc} onChange={(e) =>setProjectDesc( e.target.value)}/>
             <input type="text" placeholder="Project link" name="link" value={projectnLink} onChange={(e) =>setProjectLink( e.target.value)} />
-            <select name='types' onChange={(e) => setProjectType(e.target.value)}>
+            <select name='types'  onChange={(e) => 
+        setProjectType(e.target.value)
+        }>
   {projecttypes.map((type) => {
-    // console.log(type.id);
     return (
-      <option key={type.id} value={type.id}>
+      <option key={type.id} value={type.id} 
+         >
         {type.name}
       </option>
     );
@@ -189,11 +196,12 @@ console.log(res.data);
               })}
 
             </div>
-            <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit' } </button>
 
-
-
-        </form>
+            <button disabled={isLoading} type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
+            <ToastContainer/>
+           
+         
+        </form> 
 
       </div> </>:  (  <DashboardProject/>)}
 
