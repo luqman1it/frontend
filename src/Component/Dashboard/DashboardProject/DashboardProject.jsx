@@ -5,6 +5,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import ShowForm from './ShowForm/ShowForm';
 import { getData } from './getData';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import EditForm from '../DashboardProject/EditForm/EditForm';
 
 
 
@@ -12,6 +14,10 @@ import axios from 'axios';
 const DashboardProject = () => {
    const [buttonclicked,setButtonClicked]=useState(false);
    const [projects, setProjects] = useState([]);
+   const [editbuttonclicked,setEditButtonClicked]=useState(false); 
+   const navigate=useNavigate()
+
+
 
    useEffect(() => {
        getData().then((data) => {
@@ -46,6 +52,12 @@ const DashboardProject = () => {
     }
 
 
+    const handleEdit=(id)=>{
+      console.log(id)
+      navigate(`/dashboard/EditForm/${id}`)
+     }
+
+
 
    const columns = useMemo(() => {
      return [
@@ -63,6 +75,15 @@ const DashboardProject = () => {
         renderCell: (params) =>
           <Button  color='error' variant='contained' onClick={(e)=>handleDelete(e,params.row)}>
             Delete
+          </Button>
+      },
+      {
+        field: "action",
+        headerName: "Action",
+        sortable: false,
+        renderCell: (params) =>
+          <Button  color='error' variant='contained' onClick={(e)=>handleEdit(params.row.id)}>
+            Edit
           </Button>
       },
      ];
@@ -112,6 +133,8 @@ const DashboardProject = () => {
 
         </>
       )}
+
+{editbuttonclicked && <EditForm/>}
 
 </Box>
 
