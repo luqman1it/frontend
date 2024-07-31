@@ -10,8 +10,6 @@ import { getData } from "./getData"
 import EditForm from "./EditForm/EditForm"
 export default function Skills() {
 
-
-       const [get,setget] = useState(true)
        const[Skills,setSkills]=useState([])
        const [buttonclicked,setButtonClicked]=useState(false); 
        const [editbuttonclicked,setEditButtonClicked]=useState(false); 
