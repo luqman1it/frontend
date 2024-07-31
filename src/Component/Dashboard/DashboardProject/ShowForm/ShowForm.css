@@ -134,7 +134,7 @@
 
 
   input:checked  {
-    background-color: black;
+    background-color: black!important;
     position: relative;
   }
 

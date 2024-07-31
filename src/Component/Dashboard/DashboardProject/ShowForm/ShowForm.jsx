@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
 import DashboardProject from '../DashboardProject'
-
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -32,7 +31,6 @@ const ShowForm = () => {
     const showToastMessage = () => {
       toast.success("project added successfully !");
     };
-
 
 
 
@@ -75,27 +73,19 @@ const ShowForm = () => {
       axios.get('http://127.0.0.1:8000/api/get-skills').then(res=>setSkills(res.data.skills));
 
     },[])
-    // const handleChecked=(e)=>{
-    //  setIsChecked(!isChecked)
-    //  var array = []
-    //  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    const handleChecked=(e)=>{
+     setIsChecked(!isChecked)
+     var array = []
+     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
 
-    //  for (var i = 0; i < checkboxes.length; i++) {
-    //    array.push(checkboxes[i].id)
+     for (var i = 0; i < checkboxes.length; i++) {
+       array.push(checkboxes[i].id)
 
-    //  }
-    //  setSelectSkill(array)
+     }
+     setSelectSkill(array)
 
-    // }
-
-    const handleChecked = (e) => {
-        const { id, checked } = e.target;
-        if (checked) {
-            setSelectSkill([...selectSkill, parseInt(id)]);
-        } else {
-            setSelectSkill(selectSkill.filter((skill) => skill !== parseInt(id)));
-        }
     }
+
 
     const handleCloseForm = () =>{
       setCloseForm(true)
@@ -126,6 +116,7 @@ const ShowForm = () => {
 
 
 
+
        await axios.post('http://127.0.0.1:8000/api/addprojects',
           formData
         , {
@@ -137,7 +128,6 @@ const ShowForm = () => {
 console.log(res.data);
         if (res.status === 200) {
 
-
           showToastMessage()
           setProjectName('')
           setProjectDesc('')
@@ -148,7 +138,6 @@ console.log(res.data);
 
 
             setIsLoading(false)
-            toast("This is a toast notification !");
 
         }
 
@@ -193,6 +182,7 @@ console.log(res.data);
             <div className='ra-skills-checkbox'>
               <h2>Skills</h2>
 
+
               {projectskills.map((skill)=>{
                 return (
                  <div className="ra-checkbox-wrapper">
@@ -207,7 +197,6 @@ console.log(res.data);
               })}
 
             </div>
-
             <button disabled={isLoading} type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
             <ToastContainer/>
 
