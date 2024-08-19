@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 
 import "./Project.css";
 import { getTypes } from "./getTypes.js";
+import axios from "axios";
 
 
 
@@ -22,52 +23,68 @@ const Project = () => {
 
   const [projects, setProjects] = useState([]);
   const [types, setTypes] = useState([]);
-  const [category, setCategory] = useState('All');
+  const [filter,setfilter]=useState([])
+  const [category, setCategory] = useState('');
 
   useEffect(() => {
-    getProjects().then((data) => {
-      setProjects(data);
-    });
+    const getProjects = async () => {
 
-    getTypes().then((data) => {
+
+
+try {
+  let apiUrl = `http://127.0.0.1:8000/api/allprojects${category !== 'All' ? `?type=${category}` : ''}`;
+
+  const response = await axios.get(apiUrl);
+  setProjects(response.data.projects);
+} catch (error) {
+  console.error(error);
+}
+};
+
+
+
+
+
+  getTypes().then((data) => {
 
       setTypes(data);
     });
+console.log(category);
+getProjects();
+
+  }, [category]);
+
+// const filterfunction=(event)=>{
+//     setfilter(projects.filter(d=>d.type_id==event.target.value))
+// }
+
+//   const handleFilter = (e) => {
+//     let word=e.target.value
+//     setCategory(word)
+
+//     if (word=='All'){
+//       getProjects().then(res => {
+//         setProjects(res);
+//       })
+
+// getProjects()
+
+//   }
 
 
-  }, []);
 
-
-  const handleFilter = (e) => {
-    let word=e.target.value
-    setCategory(word)
-
-    if (word=='All'){
-      getProjects().then(res => {
-        setProjects(res);
-      })
-
-  }
- else{
-    getProjects().then(res => {
-         const filtered=res.filter(item=> item.type.name === word);
-        setProjects(filtered)}
-      )
-     
-
-    }
-  }
+//   }
 
   return (
     <div id="project">
       <SectionHeader title="My Projects" />
       <div className="nav_filterbuttons">
-         <button className="filterbutton" value='All' onClick={handleFilter}>
+         <button className="filterbutton"  onClick={()=>setCategory('All')}>
            All
           </button>
         {types?.map((type)=>{
           return (
-          <button className="filterbutton" id={type.id} value={type.name} onClick={handleFilter}>
+          <button className="filterbutton"  name="type"id={type.id} value={type.id} onClick={(e)=>setCategory(e.target.value)}>
             {type.name}
           </button>)
         })}
@@ -97,7 +114,7 @@ const Project = () => {
 
             <div key={project.id} className="projectcard">
               <SwiperSlide>
-                <img src={`http://localhost:8000/storage/${project.img_url}`} />
+                <img src={`http://localhost:8000/storage/${project.img_url}`}  height="60%"/>
                 <h2>{project.name}</h2>
                 <p>{project.description}</p>
                 <a href={project.link}>

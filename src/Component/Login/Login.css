@@ -39,7 +39,7 @@
     outline: none
 }
 
-input[type='submit'] {
+.btn-log {
     background-color: var(--button-color);
     display: block;
     margin: 0 auto;

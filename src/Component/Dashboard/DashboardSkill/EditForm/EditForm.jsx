@@ -4,7 +4,8 @@ import Skills from '../Skills';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const EditForm = () => {
 
@@ -12,7 +13,8 @@ const EditForm = () => {
         const [name,setName]= useState()
         const [image,setImage]= useState()
         const [item,setItem]= useState({})
-        
+        const [isLoading, setIsLoading] = useState(false);
+
         const params= useParams()
         const navigate=useNavigate()
 
@@ -21,8 +23,9 @@ const EditForm = () => {
 
         },[])
 
-
-
+        const showToastMessage = () => {
+            toast.success("Skill added successfully !");
+          };
         const sendData = async (event) => {
             event.preventDefault();
 
@@ -32,7 +35,7 @@ const EditForm = () => {
                 _method:"PUT"
 
             }
- 
+
            try {
               const response = await axios.post(
                 "http://127.0.0.1:8000/api/update-skill/"+params.id ,
@@ -47,7 +50,10 @@ const EditForm = () => {
                 }
               );
               console.log(response.data.skill);
+              showToastMessage()
+
               navigate("/dashboard/skills")
+
 
                 } catch (error) {
               console.error(error);
@@ -55,7 +61,7 @@ const EditForm = () => {
 
             }
           };
-      
+
   return (
         <div className="ra-skill-edit">
             <div className='ra-skill-edit-form'>
@@ -63,25 +69,26 @@ const EditForm = () => {
                     <div className='nameSection'>
                         <label >Skill Name</label>
                         <input type="text" name="name" onChange={(event)=>setName(event.target.value)} defaultValue={item.name} />
-                        
+
                     </div>
                     <div className='ImageSection'>
                         <input type="file" name="image"  onChange={(event)=>setImage(event.target.files[0])}/>
                     </div>
                     <div className='edit-skill-btn'>
-                        <button>Submit</button>
+                    <button disabled={isLoading}  type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
                     </div>
-                   
-                
-                </form>             
-                
+
+
+                </form>
+                <ToastContainer/>
+
              </div>
-        
+
             <div className='skill-show-img'>
                  <img src={`http://localhost:8000/storage/${item.image}`} alt="" width='100px' height='100px'/>
              </div>
 
-        </div> 
+        </div>
   )
 }
 

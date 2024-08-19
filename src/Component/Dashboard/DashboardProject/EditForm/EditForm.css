@@ -22,8 +22,8 @@ width: 80%;
     border: 1px solid transparent;
     background-color: white;
     animation: dropTop .3s linear;
-  
-     
+
+
 }
 
 .ra-project-edit .ra-project-edit-form .nameSection,.descriptionSection,.linkSection,.skillsSection{
@@ -35,7 +35,7 @@ width: 80%;
     justify-content: center;
     text-align: center;
     margin-top: 10px;
-    
+
 }
 .ra-project-edit .ra-project-edit-form form label{
     width: 45%;
@@ -52,33 +52,53 @@ width: 80%;
     color: rgba(0, 0,0, 0.5);
     background-color: lightgrey;
     padding: 5px;
-    
+
 }
 
 .ra-project-edit .ra-project-edit-form .ImageSection{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
-    padding: 10px;
+    padding: 20px;
+    justify-content: center;
     align-items: center;
-    
-      
+
+
+}
+.ra-project-edit .ra-project-edit-form .ImageSection label{
+    border: 2px solid var(--button-color);
+    cursor: pointer;
 }
 .ra-project-edit .ra-project-edit-form .ImageSection input{
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid var(--button-color);
     color: rgba(0, 0,0, 0.5);
-    background-color: transparent;
-      
+    width: 100%;
+    margin-left: 50px;
+}
+.ra-project-edit .ra-project-edit-form .typeSection {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+    align-items: center;
+}
+.ra-project-edit .ra-project-edit-form .typeSection label{
+    padding-left: 30px;
+    justify-content: center;
+    align-items: center;
 }
 .ra-project-edit .ra-project-edit-form .typeSection select{
    padding: 10px;
+   width: 70%;
+   border-bottom: 1px solid var(--button-color)!important;
+   border: none;
    color:var(--button-color);
    background-color: lightgrey;
-   
+
 }
 
 input:checked  {
-    background-color: #b25729;
+    background-color: black;
     position: relative;
   }
 
@@ -89,5 +109,15 @@ input:checked  {
     border-radius: 5px;
     color: white;
     font-size: 1rem;
-    
+
+}
+
+.ImageSection .img-pro
+
+{
+    height: 200px!important;
+    width: 200px!important;
+    margin-bottom: 300px;
+    object-fit: contain;
+    margin:  auto;
 }
