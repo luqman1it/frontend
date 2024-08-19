@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './ShowForm.css'
 import axios from 'axios';
 import DashboardProject from '../DashboardProject'
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 const ShowForm = () => {
@@ -11,6 +9,9 @@ const ShowForm = () => {
 
     const [closeForm,setCloseForm]=useState(false)
     const [isLoading, setIsLoading] = useState(false);
+
+    const [isChecked, setIsChecked] = useState(false);
+
     const [projectname,setProjectName]=useState('')
     const [projectdesc,setProjectDesc]=useState('')
     const [projectnLink,setProjectLink]=useState('')
@@ -24,6 +25,7 @@ const ShowForm = () => {
     const showToastMessage = () => {
       toast.success("project added successfully !");
     };
+
 
 
 
@@ -75,6 +77,8 @@ const ShowForm = () => {
 
     },[])
 
+
+  
     const handleCloseForm = () =>{
       setCloseForm(true)
       console.log('closed')
@@ -114,6 +118,7 @@ const ShowForm = () => {
 
 
 
+
        await axios.post('http://127.0.0.1:8000/api/addprojects',
           formData
         , {
@@ -125,6 +130,7 @@ const ShowForm = () => {
 console.log(res.data);
         if (res.status === 200) {
 
+
           showToastMessage()
           setProjectName('')
           setProjectDesc('')
@@ -135,6 +141,7 @@ console.log(res.data);
 
 
             setIsLoading(false)
+            toast("This is a toast notification !");
 
         }
 
@@ -194,6 +201,7 @@ type
                  <div className="ra-checkbox-wrapper">
                   <label>
                     <input type="checkbox" name="skill_id[]" id={skill.id} onChange={handleChecked} value={skill.name}
+
                   />
                     <p>{skill.name}</p>
                   </label>
@@ -203,6 +211,7 @@ type
               })}
 
             </div>
+
             <button disabled={isLoading} type="submit"> {isLoading ?'... Sending' : 'Submit'}</button>
             <ToastContainer/>
 

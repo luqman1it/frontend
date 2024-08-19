@@ -134,7 +134,9 @@
 
 
   input:checked  {
+ kinana-last-update
     background-color: black!important;
+
     position: relative;
   }
 
