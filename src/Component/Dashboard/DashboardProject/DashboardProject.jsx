@@ -7,21 +7,26 @@ import { getData } from './getData';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import EditProjectForm from './EditForm/EditProjectForm';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const DashboardProject = () => {
    const [buttonclicked,setButtonClicked]=useState(false);
    const [projects, setProjects] = useState([]);
-   const [editbuttonclicked,setEditButtonClicked]=useState(false); 
+   const [editbuttonclicked,setEditButtonClicked]=useState(false);
    const navigate=useNavigate()
 
-
+   const showToastMessage = () => {
+    toast.success("project deleted successfully !");
+  };
 
    useEffect(() => {
        getData().then((data) => {
        setProjects(data);
        });
+
+
    }, []);
 
 
@@ -40,8 +45,8 @@ const DashboardProject = () => {
             getData().then((data) => {
                 setProjects(data);
                 });
-          alert('deleted')
-         }
+                showToastMessage()
+            }
 
   })   }
 
@@ -63,8 +68,17 @@ const DashboardProject = () => {
      { field: "id", headerName: "Project_ID", width: 70, filterable: false },
      { field: "name", headerName: "Project Name", width: 130 },
      { field: "description", headerName: "Description", width: 130 },
-     { field: "img_url", headerName: "Image Url", width: 130 },
-     { field: "link", headerName: "Link", width: 130 },
+     {
+        field: "img_url",
+        headerName: "img",
+        sortable: false,
+        renderCell:(params)=>
+            <img
+        src={`http://127.0.0.1:8000/storage/${params.value}`}
+        alt={`Project ${params.id}`}
+        style={{ maxWidth: "100px", maxHeight: "100px" }}
+      />      },
+           { field: "link", alheaderName: "Link", width: 130 },
      { field: "type_id", headerName: "Type ID", width: 130 },
 
      {
@@ -96,10 +110,10 @@ const DashboardProject = () => {
 
   <Box
         sx={{
-          
+
             height: "560px",
             width: "100%",
-            
+
         }}
         >
       {buttonclicked ? <ShowForm/>
@@ -126,12 +140,13 @@ const DashboardProject = () => {
             pagination
            autoPageSize
             rowsLoadingMode="server"
-            
+
         ></DataGrid>
-        
+
 
         </>
       )}
+            <ToastContainer/>
 
 {editbuttonclicked && <EditProjectForm/>}
 

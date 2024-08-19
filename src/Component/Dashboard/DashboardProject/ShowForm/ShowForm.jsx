@@ -11,21 +11,14 @@ const ShowForm = () => {
 
     const [closeForm,setCloseForm]=useState(false)
     const [isLoading, setIsLoading] = useState(false);
-    const [isChecked, setIsChecked] = useState(false);
-
     const [projectname,setProjectName]=useState('')
     const [projectdesc,setProjectDesc]=useState('')
     const [projectnLink,setProjectLink]=useState('')
     const [projecttype,setProjectType]=useState(null)
     const [projecttypes,setProjectTypes]=useState([])
     const [projectFile,setProjectFile]=useState(null)
-    const [skills, setSkills] = useState([]);
-    const [shownotify, setShowNotify] = useState(true);
-
     const [selectSkill, setSelectSkill] = useState([]);
-
-
-    const [projectskills,setProjectskills]=useState([])
+    const [skills, setSkills] = useState([]);
 
 
     const showToastMessage = () => {
@@ -60,32 +53,27 @@ const ShowForm = () => {
         });
     };
 
+    const handleChecked = (e) => {
+      const { id, checked } = e.target.value;
+      if (checked) {
+          setSelectSkill([...selectSkill, parseInt(id)]);
+      } else {
+          setSelectSkill(selectSkill.filter((skill) => skill !== parseInt(id)));
+      }
+  }
 
 
     useEffect(()=>{
       getTypes().then(res=>{
         setProjectTypes(res)
       getSkills().then(res=>{
-        setProjectskills(res)
+        setSkills(res)
       })
 
       });
       axios.get('http://127.0.0.1:8000/api/get-skills').then(res=>setSkills(res.data.skills));
 
     },[])
-    const handleChecked=(e)=>{
-     setIsChecked(!isChecked)
-     var array = []
-     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-
-     for (var i = 0; i < checkboxes.length; i++) {
-       array.push(checkboxes[i].id)
-
-     }
-     setSelectSkill(array)
-
-    }
-
 
     const handleCloseForm = () =>{
       setCloseForm(true)
@@ -96,11 +84,14 @@ const ShowForm = () => {
     const handleSubmit = async (e) =>{
       console.log(e)
        e.preventDefault();
+
        setIsLoading(true);
+
        const fileInputElement = document.getElementById('input-file') ;
        if (!fileInputElement) {
          fileInputElement.click();
        }
+  const typeId = parseInt(projecttype);
 
 
        const formData=new FormData();
@@ -108,11 +99,17 @@ const ShowForm = () => {
        formData.append('name', projectname);
        formData.append('description', projectdesc);
        formData.append('link', projectnLink);
-       formData.append('type_id', projecttype);
+       if(typeId.length>0){
+        formData.append('type_id', typeId);
+            console.log(typeId)
+       }
+       formData.append('type_id', typeId);
        formData.append('img_url', projectFile);
-       {selectSkill.map((skillId)=>{
-        formData.append('skill_id[]', skillId);
-    })}
+       if(selectSkill.length > 0){
+        formData.append('skill_id', selectSkill);
+        console.log(selectSkill)
+
+    }
 
 
 
@@ -144,7 +141,7 @@ console.log(res.data);
 
 
       })
-
+console.log(projecttype)
 
 
 
@@ -164,10 +161,16 @@ console.log(res.data);
 
             <input type="text" placeholder="Project Name" name="name" value={projectname} onChange={(e) =>setProjectName( e.target.value)}/>
             <input type="text" placeholder="Project description" name="description"value={projectdesc} onChange={(e) =>setProjectDesc( e.target.value)}/>
+
             <input type="text" placeholder="Project link" name="link" value={projectnLink} onChange={(e) =>setProjectLink( e.target.value)} />
-            <select name='types'  onChange={(e) =>
+
+            <select name='type_id'  onChange={(e) =>
         setProjectType(e.target.value)
         }>
+             <option selected
+         >
+type
+ </option>
   {projecttypes.map((type) => {
     return (
       <option key={type.id} value={type.id}
@@ -177,17 +180,20 @@ console.log(res.data);
     );
   })}
 </select>
+<div className='in'>
+<label id="image-proj"> add image</label>
+            <input type="file" id="input-file" className="imageproo" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
 
-            <input type="file" id="input-file" onChange={(e)=>  setProjectFile(e.target.files[0])}/>
-            <div className='ra-skills-checkbox'>
+</div>
+                <div className='ra-skills-checkbox'>
               <h2>Skills</h2>
 
 
-              {projectskills.map((skill)=>{
+              {skills.map((skill)=>{
                 return (
                  <div className="ra-checkbox-wrapper">
                   <label>
-                    <input type="checkbox" name="skii_id[]" id={skill.id} onChange={handleChecked} value={skill.name}
+                    <input type="checkbox" name="skill_id[]" id={skill.id} onChange={handleChecked} value={skill.name}
                   />
                     <p>{skill.name}</p>
                   </label>

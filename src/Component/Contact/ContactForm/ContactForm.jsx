@@ -1,10 +1,12 @@
 import {  useState } from 'react'
 import './ContactForm.css'
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
-  const [isLoading, setIsLoading] = useState(false);   
- 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formMessage, setFormMessage] = useState({
     name: '',
     email: '',
@@ -13,13 +15,16 @@ const ContactForm = () => {
   });
 
 
- 
+  const showToastMessage = () => {
+    toast.success("send message !");
+  };
+
 
 
   function handelFormMessage(e) {
 
 
-    e.preventDefault();  
+    e.preventDefault();
     setIsLoading(true);
     console.log(isLoading)
     axios.post('http://127.0.0.1:8000/api/StoreContact', {
@@ -30,21 +35,23 @@ const ContactForm = () => {
     }).then(res => {
 
       if (res.status === 200) {
-        alert('message send');
+        showToastMessage()
         setFormMessage({
           name: '',
           email: '',
           subject: '',
           message: ''
         })
-      
-          
+
+
       }
     })
 
   }
   return (
-    <form onSubmit={(e) => handelFormMessage(e)} className='aj-form'>
+    <>
+
+      <form onSubmit={(e) => handelFormMessage(e)} className='aj-form'>
       <div className='aj-row aj-name-mail'>
         <input className='aj-name-input' value={formMessage.name} onChange={(e) => setFormMessage({ ...formMessage, name: e.target.value })} placeholder='Your Name *' type="text" name="name" id="" />
         <input className='aj-email-input' value={formMessage.email} onChange={(e) => setFormMessage({ ...formMessage, email: e.target.value })} placeholder='Your Email *' type="email" name="email" />
@@ -55,6 +62,10 @@ const ContactForm = () => {
       <textarea className='aj-message-textarea' value={formMessage.message} onChange={(e) => setFormMessage({ ...formMessage, message: e.target.value })} placeholder='Message *' name="message" rows={6} ></textarea>
       <button disabled={isLoading}  type="submit">Submit</button>
     </form>
+
+    </>
+
+
   )
 }
 

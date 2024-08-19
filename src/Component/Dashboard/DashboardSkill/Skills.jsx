@@ -8,17 +8,21 @@ import { DataGrid } from "@mui/x-data-grid";
 import ShowForm from "./ShowForm/ShowForm"
 import { getData } from "./getData"
 import EditForm from "./EditForm/EditForm"
+import {  ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
 export default function Skills() {
 
        const[Skills,setSkills]=useState([])
-       const [buttonclicked,setButtonClicked]=useState(false); 
-       const [editbuttonclicked,setEditButtonClicked]=useState(false); 
+       const [buttonclicked,setButtonClicked]=useState(false);
+       const [editbuttonclicked,setEditButtonClicked]=useState(false);
         const navigate=useNavigate()
 
+        const showToastMessage = () => {
+            toast.success("skill deleted successfully !");
+          };
 
 
-
-         
 
 
 
@@ -29,12 +33,12 @@ export default function Skills() {
             }, []);
 
             const handleAdd=()=>{setButtonClicked(true) }
-          
+
              const handleEdit=(id)=>{
               console.log(id)
               navigate(`/dashboard/EditForm/${id}`)
              }
-  
+
 
             const handleDelete = async (event,skill) => {
 
@@ -49,18 +53,31 @@ export default function Skills() {
                             getData().then((data) => {
                                 setSkills(data);
                                 });
-                          alert('deleted')
-                         }
+                                showToastMessage()
+                                               }
 
                   })
                  }
-
 
                 const columns = useMemo(() => {
                 return [
                 { field: "id", headerName: "Skill_ID", width: 70, filterable: false },
                 { field: "name", headerName: "Skill Name", width: 130 },
-                { field: "image", headerName: "Image", width: 130 },
+                {
+                    field: "image",
+                    headerName: "image ",
+                    sortable: false,
+                        renderCell:(params)=>
+                            <img
+                        src={`http://127.0.0.1:8000/storage/${params.value}`}
+                        alt={`Project ${params.id}`}
+                        style={{ maxWidth: "100px", maxHeight: "50px" }}
+                      />
+
+
+
+                  },
+
                 {
                    field: "Delete",
                    headerName: "Delete ",
@@ -77,7 +94,7 @@ export default function Skills() {
                    headerName: "Edit ",
                    sortable: false,
                    renderCell: (params) =>
-    
+
                      <Button  color='success' variant='contained' onClick={(e)=>handleEdit(params.row.id)}>
                        Edit
                      </Button>
@@ -130,6 +147,7 @@ export default function Skills() {
 )}
 
 {editbuttonclicked && <EditForm/>}
+<ToastContainer/>
 
 </Box>
     </div>

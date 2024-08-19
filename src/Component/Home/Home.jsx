@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Home.css'
 import resume from '../../assets/Resume.pdf';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/focal x.svg'
+import axios from 'axios';
 export default function Home() {
     const [currentSection, setCurrentSection] = useState('home');
+const [login,setlogin]=useState(true)
+const [name,setname]=useState('')
 
     const handleSectionChange = (sectionName) => {
         setCurrentSection(sectionName);
@@ -29,7 +32,12 @@ export default function Home() {
                             <li className={currentSection === 'about' ? 'active' : ''} onClick={() => handleSectionChange('about')}> <a href="#about">About</a></li>
                             <li className={currentSection === 'project' ? 'active' : ''} onClick={() => handleSectionChange('project')}>  <a href="#project">Project</a></li>
                             <li className={currentSection === 'contact' ? 'active' : ''} onClick={() => handleSectionChange('contact')}> <a href="#contact">Contact</a></li>
-                            <Link to='/login' className='login'>Login</Link>
+
+            <Link to='/login' className='login'>Login</Link>
+
+
+
+
 
                         </div>
                         <div className="burger-menu" onClick={toggleDropDown}>
@@ -41,6 +49,7 @@ export default function Home() {
                                 <li onClick={() => handleSectionChange('about')}> <a href="#about">About</a> </li>
                                 <li onClick={() => handleSectionChange('project')}> <a href="#project">Project</a> </li>
                                 <li onClick={() => handleSectionChange('contact')}> <a href="#contact">Contact</a></li>
+
                                 <Link to='/login' className='login'>Login</Link>
                             </div>
                         }
@@ -63,6 +72,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            
         </div >
+
     )
 }

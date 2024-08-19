@@ -8,15 +8,21 @@ export default function Login() {
         email: '',
         password: ''
     })
+    const [isLoading, setIsLoading] = useState(false);
     function handleLogIn(e) {
         e.preventDefault();
+        setIsLoading(true);
+
         axios.post('http://127.0.0.1:8000/api/login', {
             email: formLogin.email,
             password: formLogin.password
         }).then(res => {
             if (res.status === 200) {
+
                 window.localStorage.setItem('token', res.data.authorisation.token)
-                navigate('/dashboard');
+                setIsLoading(false);
+
+                navigate('/dashboard/box');
             }
         })
 
@@ -34,8 +40,9 @@ export default function Login() {
                     <label htmlFor="password">Password :</label>
                     <input onChange={(e) => setFormLogin({ ...formLogin, password: e.target.value })} value={formLogin.password} type="password" name="password" id="password" placeholder='Enter Your Password' />
                 </div>
-                <input type="submit" value="Sign Up" />
-            </form>
+                <button disabled={isLoading} className='btn-log' type="Sign Up"> {isLoading ?'... Sending' : 'Sign Up'}</button>
+                </form>
+
         </div>
     )
 }

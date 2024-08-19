@@ -37,33 +37,38 @@
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .projectswiper .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 300px;
-
+ height: 550px;
 
 }
 
 .projectswiper .swiper-slide img {
   display: block;
-  width: 100%;
-  
+  width: 300px;
+  margin: auto;
+  height: 400px;
+  object-fit: contain;
+
 }
 
 .projectswiper h2 {
   padding: 10px 0px;
   font-size: 1rem;
   left: 0px;
-
+ text-align: center;
 
 }
 
 .projectswiper p {
 
   font-size: 1rem;
+  text-align: center;
   color: #7f8c9b;
   line-height: 150%;
 
@@ -74,6 +79,11 @@
   color: #fff;
   display: inline-block;
   padding: 10px 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: auto;
   cursor: pointer;
   border: 1px solid #fff;
   margin-bottom: 0;
