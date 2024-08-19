@@ -79,7 +79,7 @@ const ShowForm = () => {
     },[])
 
 
-  
+
     const handleCloseForm = () =>{
       setCloseForm(true)
       console.log('closed')
@@ -139,10 +139,9 @@ console.log(res.data);
           setProjectType('')
 
           setProjectFile(null)
-
+          setSelectSkill('')
 
             setIsLoading(false)
-            toast("This is a toast notification !");
 
         }
 
